@@ -9,6 +9,8 @@ import DetailsPage from "../pages/DetailsPage";
 import CartPage from "../pages/CartPage";
 import CheckoutPage from "../pages/CheckoutPage";
 import ProfilePage from "../pages/ProfilePage";
+import About from "../pages/About";
+import OrderHistory from "../pages/OrderHistory";
 
 const router = createBrowserRouter([
   {
