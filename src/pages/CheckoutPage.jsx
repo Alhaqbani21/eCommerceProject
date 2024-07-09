@@ -4,7 +4,7 @@ import img from '../assets/card.png'
 function CheckoutPage() {
   return <div>
 
-{/* <Nav /> */}
+<Nav />
 <br />
 <h1 className='m-3  mx-9 text-xl font-bold'>Sopping Cart</h1>
 <br />
