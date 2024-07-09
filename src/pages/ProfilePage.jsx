@@ -1,14 +1,15 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Nav from '../componenet/Nav';
+import { CiLogout } from 'react-icons/ci';
 
 function ProfilePage() {
   const imagePlaceHolder =
     'data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgHBgkIBwgKCgkLDRYPDQwMDRsUFRAWIB0iIiAdHx8kKDQsJCYxJx8fLT0tMTU3Ojo6Iys/RD84QzQ5OjcBCgoKDQwNGg8PGjclHyU3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3N//AABEIAJQAnwMBIgACEQEDEQH/xAAbAAEBAAMBAQEAAAAAAAAAAAAABQMEBgECB//EAC8QAQACAQIEBAQFBQAAAAAAAAABAgMEEQUSITFBUWFxEyJSsTJigZHBIzRCofD/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/8QAFBEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEQMRAD8A/SQAAAAAAAB7ETadqxMz6Qy10motG8Yb7ewMIzW0uevfDf32YZiY79J9QAAAAAAAAAAAAAI7xEb/AKA9rWbWitYmZntEKml4ZG0W1Hf6Y/ln0GjjT05r9csx1ny9IbgPnHjpjry0pWseURs+gAY8uHFlj+pSLe8dWQBI1XDLUib6ed4+me6d47eLqE7iWj56zmxRtePxRHjAJAAAAAAAAAADf4RgjJlnLaPlp0j3aC9w3HyaTH+aOb9wbQAAAAAAAIPEcHwdRPLHyW6x6ebVWOMY+bTxfxrb7o4AAAAAAAADpNPG2DHH5I+zm3Q6K/PpcU/kgGcAAAAAAAGrxL+yy/p94QVvituXR2jxtMQiAAAAAAAAAKvB829LYZnrXrHslPvBlthyVvTvHh5g6UY9PlpnxRek9J8PJkAAAAABr6zU102Kbd7f4185BP4xm581cVZ6U6z7ynvb2m9ptad7TO8vAAAAAAAAAAe1ra9orSs2me0QDLpdTfTX3p1ifxR4SuabUU1GPnx7+sT4NLScMiNrajrP0R/KlWsViIrEREdogHoAAANfV6ummpvaJm09oQ8+a+e83vO8/Z0WSlb1mt6xaJ8JS9XwyaxN9P1j6J/gE0J6TtMbT5T4AAAAAAAAPvDitmyRjpHWf9eoPcGC+oyRTHHvPhELmk0tNNXaI3vPe095fWm09NPjilI9585ZgAAAAAAAAamt0VNRG8bVyfVt390TJjvivNMkbWju6Zra3S11OPbtePwyCAPq9bUvat42tE7TD5AAAAAXOG6aMGHmtH9S/WfT0S9Bh+NqqV2+WPml0AAAAAAAAAAAAAJ3FtNz0+NSPmpHX1hIdPaItWYmOkuc1GL4Oa+PwrPQGMAAAFXgtPkyZPOeX/v3U2pw2vLo8frvLbAAAAAAAAAAAAAR+M4+XNTJ9UbfssNDjFN9NW302BGAAePQHR6WIjTYoj6I+zKAAAAAAAAAAAAADV4nG+hyem33AEEAH//Z';
-
+  const navigate = useNavigate();
   const [showAvatarModal, setShowAvatarModal] = useState(false);
 
   const [user, setUser] = useState({});
@@ -97,17 +98,26 @@ function ProfilePage() {
               {/* Sidebar */}
               <div className="col-span-3">
                 <nav className="flex flex-col space-y-2">
-                  <a
-                    href="#"
+                  <Link
+                    to={'../profile'}
                     className="p-2 rounded bg-blue-100 text-[#E47732] font-semibold"
                   >
                     My Profile
-                  </a>
+                  </Link>
                   <Link
                     to={'/OrderHistory'}
                     className="p-2 rounded hover:bg-gray-200"
                   >
                     Order History
+                  </Link>
+                  <Link
+                    onClick={() => {
+                      localStorage.clear();
+                      navigate('../');
+                    }}
+                    className="p-2 rounded hover:bg-gray-200 flex gap-2 items-center"
+                  >
+                    Logout <CiLogout className="text-red-500" />
                   </Link>
                 </nav>
               </div>
