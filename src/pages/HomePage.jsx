@@ -5,6 +5,10 @@ import { Link } from 'react-router-dom';
 import Nav from '../componenet/Nav';
 import Footer from '../componenet/Footer';
 // import { useRef } from "react";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { useDispatch } from 'react-redux';
+import { fetchCart } from '../features/cartSlice';
 
 function HomePage() {
   const [category, setcategory] = React.useState([]);
@@ -13,6 +17,9 @@ function HomePage() {
   const [searchInput, setsearchInput] = useState('');
   const [visibleCount, setVisibleCount] = useState(10);
   const ITEMS_TO_LOAD = 10;
+  const [userData, setUserData] = useState([]);
+  const userId = localStorage.getItem('userId');
+  const dispatch = useDispatch();
 
   useEffect(() => {
     axios
@@ -52,6 +59,20 @@ function HomePage() {
       });
   }, []);
 
+  useEffect(() => {
+    if (userId) {
+      fetchUserData();
+    }
+  }, [userId]);
+
+  function fetchUserData() {
+    axios
+      .get(`https://668a90262c68eaf3211d2977.mockapi.io/users/${userId}`)
+      .then((response) => {
+        setUserData(response.data);
+        console.log(response.data);
+      });
+  }
   const searchFilterData = () => {
     if (searchInput === '') {
       setFilteredData(product);
@@ -76,11 +97,41 @@ function HomePage() {
     setFilteredData(array);
     // const myRef = useRef();
   };
+
+  const handleAddToCart = (product) => {
+    const existingItem = userData.cart.find((item) => item.id === product.id);
+    const updatedCart = existingItem
+      ? userData.cart.map((item) =>
+          item.id === product.id
+            ? { ...item, quantity: item.quantity + 1 }
+            : item
+        )
+      : [...userData.cart, { ...product, quantity: 1 }];
+
+    const updatedUserData = { ...userData, cart: updatedCart };
+
+    axios
+      .put(
+        `https://668a90262c68eaf3211d2977.mockapi.io/users/${userId}`,
+        updatedUserData
+      )
+      .then(() => {
+        setUserData(updatedUserData);
+        toast.success('Added product to cart!');
+        dispatch(fetchCart(userId));
+      })
+      .catch((error) => {
+        console.error('Error updating cart:', error);
+        toast.error('Failed to add product to cart');
+      });
+  };
+
   return (
     <div className="bg-[#E9EBF7]">
       {/* navBar */}
 
       <Nav />
+      <ToastContainer />
 
       {/* Hero */}
       <div className=" bg-base flex flex-row-reverse justify-around  items-center">
@@ -211,7 +262,7 @@ function HomePage() {
                       {e.discount}
                     </span>
                   </div>
-                  <div className="p-4">
+                  <div className="p-4 flex flex-col">
                     <div className="flex items-center">
                       <div className="flex items-center text-sm text-gray-400">
                         <svg
@@ -258,6 +309,12 @@ function HomePage() {
                       {e.title}
                     </h2>
                     <p className="mt-1 text-gray-600">${e.price}</p>
+                    <button
+                      className="btn bg-[#E47732] hover:bg-[#E97739] text-white self-end"
+                      onClick={() => handleAddToCart(e)}
+                    >
+                      Add to Cart
+                    </button>
                   </div>
                 </div>
               </div>
@@ -271,7 +328,7 @@ function HomePage() {
         <div className="w-full  bg-white flex pb-5 justify-center">
           <button
             onClick={handleShowMore}
-            className="mt-5 bg-blue-500 text-white py-2 px-4 rounded"
+            className="mt-5 bg-primary text-white py-2 px-4 rounded"
           >
             Show More
           </button>
