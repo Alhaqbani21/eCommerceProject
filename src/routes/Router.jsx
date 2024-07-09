@@ -1,52 +1,54 @@
-import React from "react";
+import React from 'react';
 
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import HomePage from "../pages/HomePage";
-import LoginPage from "../pages/LoginPage";
-import SignUpPage from "../pages/SignUpPage";
-import ErrorPage from "../pages/ErrorPage";
-import DetailsPage from "../pages/DetailsPage";
-import CartPage from "../pages/CartPage";
-import CheckoutPage from "../pages/CheckoutPage";
-import ProfilePage from "../pages/ProfilePage";
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import HomePage from '../pages/HomePage';
+import LoginPage from '../pages/LoginPage';
+import SignUpPage from '../pages/SignUpPage';
+import ErrorPage from '../pages/ErrorPage';
+import DetailsPage from '../pages/DetailsPage';
+import CartPage from '../pages/CartPage';
+import CheckoutPage from '../pages/CheckoutPage';
+import ProfilePage from '../pages/ProfilePage';
+import OrderHistory from '../pages/OrderHistory';
+import About from '../pages/About';
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: '/',
     element: <HomePage />,
     errorElement: <ErrorPage />,
   },
   {
-    path: "/login",
+    path: '/login',
     element: <LoginPage />,
   },
   {
-    path: "/signup",
+    path: '/signup',
     element: <SignUpPage />,
   },
   {
-    path: "/details/:id",
+    path: '/details/:id',
     element: <DetailsPage />,
   },
   {
-    path: "/cart",
+    path: '/cart',
     element: <CartPage />,
   },
   {
-    path: "/checkout",
+    path: '/checkout',
     element: <CheckoutPage />,
   },
   {
-    path: "/profile",
+    path: '/profile',
     element: <ProfilePage />,
   },
 
   {
-    path: "/about",
+    path: '/about',
     element: <About />,
   },
   {
-    path: "/OrderHistory",
+    path: '/OrderHistory',
     element: <OrderHistory />,
   },
 ]);

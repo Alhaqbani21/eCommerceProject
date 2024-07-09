@@ -1,22 +1,22 @@
-import React from "react";
-import axios from "axios";
-import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import Nav from "../componenet/Nav";
-import Footer from "../componenet/Footer";
+import React from 'react';
+import axios from 'axios';
+import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import Nav from '../componenet/Nav';
+import Footer from '../componenet/Footer';
 // import { useRef } from "react";
 
 function HomePage() {
   const [category, setcategory] = React.useState([]);
   const [product, setproduct] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
-  const [searchInput, setsearchInput] = useState("");
+  const [searchInput, setsearchInput] = useState('');
   const [visibleCount, setVisibleCount] = useState(10);
   const ITEMS_TO_LOAD = 10;
 
   useEffect(() => {
     axios
-      .get("https://668a90262c68eaf3211d2977.mockapi.io/products")
+      .get('https://668a90262c68eaf3211d2977.mockapi.io/products')
       .then((res) => {
         let array = [];
         res.data.filter((res) => {
@@ -36,7 +36,7 @@ function HomePage() {
 
   useEffect(() => {
     axios
-      .get("https://668a90262c68eaf3211d2977.mockapi.io/products")
+      .get('https://668a90262c68eaf3211d2977.mockapi.io/products')
       .then((response) => {
         // handle success
 
@@ -53,7 +53,7 @@ function HomePage() {
   }, []);
 
   const searchFilterData = () => {
-    if (searchInput === "") {
+    if (searchInput === '') {
       setFilteredData(product);
     } else {
       const filtered = product.filter((product) =>
@@ -95,7 +95,7 @@ function HomePage() {
           <h1 className="mb-5 text-4xl font-bold"> New Collection </h1>
 
           <button className="btn bg-[#E47732] hover:bg-[#E97739] text-white">
-            Shop now{" "}
+            Shop now{' '}
             <svg
               className="w-6 h-6 text-gray-800 dark:text-white"
               aria-hidden="true"
@@ -130,9 +130,9 @@ function HomePage() {
         <section className="flex h-80 gap-2">
           {category.map((e, index) => (
             <button
-              key={e.index}
+              key={e.id}
               onClick={() => {
-                location.href = "#1";
+                location.href = '#1';
                 handleCategories(e.id);
               }}
               className="border hover:scale-105  bg-base-200 rounded-xl overflow-hidden"
@@ -155,7 +155,7 @@ function HomePage() {
             className="px-3 w-[30%] input input-bordered rounded-lg shadow-2xl max-md:w-[70%]"
             onChange={(e) => setsearchInput(e.target.value)}
             value={searchInput}
-            onKeyDown={(e) => (e.key === "Enter" ? searchFilterData() : null)}
+            onKeyDown={(e) => (e.key === 'Enter' ? searchFilterData() : null)}
           />
 
           <button
@@ -164,7 +164,7 @@ function HomePage() {
             }}
             className="w-10 bg-black rounded-r-lg"
           >
-            {" "}
+            {' '}
             <svg
               className=" m-auto
         text-slate-200 "
@@ -205,7 +205,7 @@ function HomePage() {
                       />
                     </Link>
                     <span
-                      style={{ display: e.discount == "" ? "none" : "" }}
+                      style={{ display: e.discount == '' ? 'none' : '' }}
                       className="absolute top-2 left-2 bg-orange-500 text-white text-xs font-semibold px-2 py-1 rounded"
                     >
                       {e.discount}
