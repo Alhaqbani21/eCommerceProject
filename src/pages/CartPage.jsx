@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 // import Nav from '../components/Nav';
 import img from '../assets/card.png';
-import CartItem from '../components/CartItem';
+import CartItem from '../componenet/CartItem';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 

@@ -9,6 +9,7 @@ import DetailsPage from '../pages/DetailsPage';
 import CartPage from '../pages/CartPage';
 import CheckoutPage from '../pages/CheckoutPage';
 import ProfilePage from '../pages/ProfilePage';
+// import About from '../pages/About';
 
 const router = createBrowserRouter([
   {
@@ -40,6 +41,10 @@ const router = createBrowserRouter([
     path: '/profile',
     element: <ProfilePage />,
   },
+  // {
+  //   path: '/about',
+  //   element: <About />,
+  // },
 ]);
 
 function Router() {
