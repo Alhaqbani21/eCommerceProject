@@ -1,23 +1,24 @@
-import React from 'react';
-import axios from 'axios';
-import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import Nav from '../componenet/Nav';
+import React from "react";
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import Nav from "../componenet/Nav";
+import Footer from "../componenet/Footer";
+// import { useRef } from "react";
+
 function HomePage() {
-  const [data, setdata] = React.useState([]);
   const [category, setcategory] = React.useState([]);
   const [product, setproduct] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
-  const [searchInput, setsearchInput] = useState('');
+  const [searchInput, setsearchInput] = useState("");
   const [visibleCount, setVisibleCount] = useState(10);
   const ITEMS_TO_LOAD = 10;
 
-  React.useEffect(() => {
+  useEffect(() => {
     axios
-      .get('https://668a90262c68eaf3211d2977.mockapi.io/products')
+      .get("https://668a90262c68eaf3211d2977.mockapi.io/products")
       .then((res) => {
         let array = [];
-        setdata(res.data);
         res.data.filter((res) => {
           if (array.length == 0) {
             array.push(res.category);
@@ -35,7 +36,7 @@ function HomePage() {
 
   useEffect(() => {
     axios
-      .get('https://668a90262c68eaf3211d2977.mockapi.io/products')
+      .get("https://668a90262c68eaf3211d2977.mockapi.io/products")
       .then((response) => {
         // handle success
 
@@ -52,7 +53,7 @@ function HomePage() {
   }, []);
 
   const searchFilterData = () => {
-    if (searchInput === '') {
+    if (searchInput === "") {
       setFilteredData(product);
     } else {
       const filtered = product.filter((product) =>
@@ -65,7 +66,16 @@ function HomePage() {
   const handleShowMore = () => {
     setVisibleCount((prevCount) => prevCount + ITEMS_TO_LOAD);
   };
-
+  const handleCategories = (e) => {
+    let array = [];
+    array = product.filter((item) => {
+      if (e == item.category.id) {
+        return item;
+      }
+    });
+    setFilteredData(array);
+    // const myRef = useRef();
+  };
   return (
     <div className="bg-[#E9EBF7]">
       {/* navBar */}
@@ -85,7 +95,7 @@ function HomePage() {
           <h1 className="mb-5 text-4xl font-bold"> New Collection </h1>
 
           <button className="btn bg-[#E47732] hover:bg-[#E97739] text-white">
-            Shop now{' '}
+            Shop now{" "}
             <svg
               className="w-6 h-6 text-gray-800 dark:text-white"
               aria-hidden="true"
@@ -107,20 +117,22 @@ function HomePage() {
         </div>
       </div>
 
-      <div className="flex bg-white  p-5 justify-between">
+      <div className="flex bg-white  p-5 justify-around">
         <div className="m-5">
           <h1 className="text-2xl  border-b-2 pb-3 border-secondary">
             Shop by categories
           </h1>
 
           <p className="text-gray-400 ">
-            +{data.length} <br /> Unique product
+            +{product.length} <br /> Unique product
           </p>
         </div>
         <section className="flex h-80 gap-2">
-          {category.map((e) => (
+          {category.map((e, index) => (
             <button
+              key={e.index}
               onClick={() => {
+                location.href = "#1";
                 handleCategories(e.id);
               }}
               className="border hover:scale-105  bg-base-200 rounded-xl overflow-hidden"
@@ -143,7 +155,7 @@ function HomePage() {
             className="px-3 w-[30%] input input-bordered rounded-lg shadow-2xl max-md:w-[70%]"
             onChange={(e) => setsearchInput(e.target.value)}
             value={searchInput}
-            onKeyDown={(e) => (e.key === 'Enter' ? searchFilterData() : null)}
+            onKeyDown={(e) => (e.key === "Enter" ? searchFilterData() : null)}
           />
 
           <button
@@ -152,7 +164,7 @@ function HomePage() {
             }}
             className="w-10 bg-black rounded-r-lg"
           >
-            {' '}
+            {" "}
             <svg
               className=" m-auto
         text-slate-200 "
@@ -174,7 +186,11 @@ function HomePage() {
         </div>
       </div>
 
-      <div className="flex flex-wrap justify-center items-center bg-white gap-10 py-5">
+      <div
+        // ref={divRef}
+        id="1"
+        className="flex flex-wrap justify-center items-center bg-white gap-10 py-5"
+      >
         {filteredData.length > 0 ? (
           filteredData.slice(0, visibleCount).map((e) => {
             return (
@@ -188,8 +204,11 @@ function HomePage() {
                         alt="Product Image"
                       />
                     </Link>
-                    <span className="absolute top-2 left-2 bg-orange-500 text-white text-xs font-semibold px-2 py-1 rounded">
-                      HOT
+                    <span
+                      style={{ display: e.discount == "" ? "none" : "" }}
+                      className="absolute top-2 left-2 bg-orange-500 text-white text-xs font-semibold px-2 py-1 rounded"
+                    >
+                      {e.discount}
                     </span>
                   </div>
                   <div className="p-4">
@@ -249,7 +268,7 @@ function HomePage() {
         )}
       </div>
       {visibleCount < filteredData.length && (
-        <div className="w-full bg-white flex juce">
+        <div className="w-full  bg-white flex pb-5 justify-center">
           <button
             onClick={handleShowMore}
             className="mt-5 bg-blue-500 text-white py-2 px-4 rounded"
@@ -258,6 +277,8 @@ function HomePage() {
           </button>
         </div>
       )}
+
+      <Footer />
     </div>
   );
 }
