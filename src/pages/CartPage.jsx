@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-// import Nav from '../components/Nav';
-import img from '../assets/card.png';
+import Nav from '../componenet/Nav';
 import CartItem from '../componenet/CartItem';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -23,7 +22,9 @@ function CartPage() {
       .then((response) => {
         const userData = response.data;
         setUserData(userData);
-        return axios.get('https://api.escuelajs.co/api/v1/products/');
+        return axios.get(
+          'https://668a90262c68eaf3211d2977.mockapi.io/products'
+        );
       })
       .then((productResponse) => {
         setUserData((prevUserData) => {
@@ -49,6 +50,8 @@ function CartPage() {
   return (
     <div>
       {/* <Nav /> */}
+      <Nav />
+
       <br />
       <h1 className="m-3  mx-9 text-xl font-bold">Shopping Cart</h1>
       <br />
