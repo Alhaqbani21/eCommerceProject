@@ -31,7 +31,7 @@ function HomePage() {
 
   useEffect(() => {
     axios
-      .get('https://api.escuelajs.co/api/v1/products')
+      .get('https://668a90262c68eaf3211d2977.mockapi.io/products')
       .then((response) => {
         // handle success
         const cleanedData = response.data.map((product) => {

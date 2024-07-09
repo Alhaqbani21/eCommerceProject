@@ -1,0 +1,362 @@
+[
+  {
+    "id": "1",
+    "title": "T-Shirt",
+    "price": 15,
+    "description": "A comfortable cotton t-shirt.",
+    "images": [
+      "https://img.freepik.com/free-photo/blank-black-t-shirt-hanger-isolated-white-space_74952-876.jpg?ga=GA1.1.1183969259.1714509484&semt=sph"
+    ],
+    "creationAt": "2024-07-09T09:32:20.000Z",
+    "updatedAt": "2024-07-09T13:08:57.000Z",
+    "category": {
+      "id": 1,
+      "name": "clothes",
+      "image": "https://api.escuelajs.co/api/v1/files/1119.png",
+      "creationAt": "2024-07-08T23:29:11.000Z",
+      "updatedAt": "2024-07-09T12:05:13.000Z"
+    }
+  },
+  {
+    "id": "2",
+    "title": "Jeans",
+    "price": 40,
+    "description": "A pair of stylish denim jeans.",
+    "images": [
+      "https://img.freepik.com/premium-photo/blue-jeans-trouser-isolated-white-background-fashion-style-clothes-concept_116547-3807.jpg?ga=GA1.1.1183969259.1714509484&semt=ais_user"
+    ],
+    "creationAt": "2024-07-09T09:32:20.000Z",
+    "updatedAt": "2024-07-09T13:08:57.000Z",
+    "category": {
+      "id": 1,
+      "name": "clothes",
+      "image": "https://api.escuelajs.co/api/v1/files/1119.png",
+      "creationAt": "2024-07-08T23:29:11.000Z",
+      "updatedAt": "2024-07-09T12:05:13.000Z"
+    }
+  },
+  {
+    "id": "3",
+    "title": "Jacket",
+    "price": 60,
+    "description": "A warm winter jacket.",
+    "images": [
+      "https://img.freepik.com/premium-vector/jacket-vectors-illustrations_776624-620.jpg?ga=GA1.1.1183969259.1714509484&semt=sph"
+    ],
+    "creationAt": "2024-07-09T09:32:20.000Z",
+    "updatedAt": "2024-07-09T13:08:57.000Z",
+    "category": {
+      "id": 1,
+      "name": "clothes",
+      "image": "https://api.escuelajs.co/api/v1/files/1119.png",
+      "creationAt": "2024-07-08T23:29:11.000Z",
+      "updatedAt": "2024-07-09T12:05:13.000Z"
+    }
+  },
+  {
+    "id": "4",
+    "title": "Sofa",
+    "price": 300,
+    "description": "A comfortable living room sofa.",
+    "images": [
+      "https://img.freepik.com/free-psd/armchair-pillow_176382-861.jpg?ga=GA1.1.1183969259.1714509484&semt=sph"
+    ],
+    "creationAt": "2024-07-09T09:32:20.000Z",
+    "updatedAt": "2024-07-09T13:08:57.000Z",
+    "category": {
+      "id": 2,
+      "name": "furniture",
+      "image": "https://api.escuelajs.co/api/v1/files/1119.png",
+      "creationAt": "2024-07-08T23:29:11.000Z",
+      "updatedAt": "2024-07-09T12:05:13.000Z"
+    }
+  },
+  {
+    "id": "5",
+    "title": "Dining Table",
+    "price": 200,
+    "description": "A wooden dining table.",
+    "images": [
+      "https://img.freepik.com/premium-photo/interior-modern-living-room-with-white-chairs-wooden-table-3d-rendering_627050-19667.jpg?ga=GA1.1.1183969259.1714509484&semt=ais_user"
+    ],
+    "creationAt": "2024-07-09T09:32:20.000Z",
+    "updatedAt": "2024-07-09T13:08:57.000Z",
+    "category": {
+      "id": 2,
+      "name": "furniture",
+      "image": "https://api.escuelajs.co/api/v1/files/1119.png",
+      "creationAt": "2024-07-08T23:29:11.000Z",
+      "updatedAt": "2024-07-09T12:05:13.000Z"
+    }
+  },
+  {
+    "id": "6",
+    "title": "Chair",
+    "price": 50,
+    "description": "An ergonomic office chair.",
+    "images": [
+      "https://img.freepik.com/free-psd/chair-pillow_176382-876.jpg?ga=GA1.1.1183969259.1714509484&semt=sph"
+    ],
+    "creationAt": "2024-07-09T09:32:20.000Z",
+    "updatedAt": "2024-07-09T13:08:57.000Z",
+    "category": {
+      "id": 2,
+      "name": "furniture",
+      "image": "https://api.escuelajs.co/api/v1/files/1119.png",
+      "creationAt": "2024-07-08T23:29:11.000Z",
+      "updatedAt": "2024-07-09T12:05:13.000Z"
+    }
+  },
+  {
+    "id": "7",
+    "title": "Running Shoes",
+    "price": 100,
+    "description": "A pair of lightweight running shoes.",
+    "images": [
+      "https://img.freepik.com/premium-photo/sports-footwear-free-photo-hd-8k-wallpaper_915071-106817.jpg?ga=GA1.1.1183969259.1714509484&semt=ais_user"
+    ],
+    "creationAt": "2024-07-09T09:32:20.000Z",
+    "updatedAt": "2024-07-09T13:08:57.000Z",
+    "category": {
+      "id": 3,
+      "name": "shoes",
+      "image": "https://api.escuelajs.co/api/v1/files/1119.png",
+      "creationAt": "2024-07-08T23:29:11.000Z",
+      "updatedAt": "2024-07-09T12:05:13.000Z"
+    }
+  },
+  {
+    "id": "8",
+    "title": "Sandals",
+    "price": 30,
+    "description": "Comfortable summer sandals.",
+    "images": [
+      "https://img.freepik.com/premium-psd/summer-footwear-flip-flop-slippers-mockup_77323-1197.jpg?ga=GA1.1.1183969259.1714509484&semt=sph"
+    ],
+    "creationAt": "2024-07-09T09:32:20.000Z",
+    "updatedAt": "2024-07-09T13:08:57.000Z",
+    "category": {
+      "id": 3,
+      "name": "shoes",
+      "image": "https://api.escuelajs.co/api/v1/files/1119.png",
+      "creationAt": "2024-07-08T23:29:11.000Z",
+      "updatedAt": "2024-07-09T12:05:13.000Z"
+    }
+  },
+  {
+    "id": "9",
+    "title": "Sneakers",
+    "price": 80,
+    "description": "Stylish sneakers for casual wear.",
+    "images": [
+      "https://img.freepik.com/free-photo/one-black-sneaker-shoe-isolated-white_93675-131266.jpg?ga=GA1.1.1183969259.1714509484&semt=sph"
+    ],
+    "creationAt": "2024-07-09T09:32:20.000Z",
+    "updatedAt": "2024-07-09T13:08:57.000Z",
+    "category": {
+      "id": 3,
+      "name": "shoes",
+      "image": "https://api.escuelajs.co/api/v1/files/1119.png",
+      "creationAt": "2024-07-08T23:29:11.000Z",
+      "updatedAt": "2024-07-09T12:05:13.000Z"
+    }
+  },
+  {
+    "id": "10",
+    "title": "Boots",
+    "price": 120,
+    "description": "Durable boots for hiking.",
+    "images": [
+      "https://img.freepik.com/free-photo/new-pair-white-sneakers-isolated-white_93675-135206.jpg?ga=GA1.1.1183969259.1714509484&semt=sph"
+    ],
+    "creationAt": "2024-07-09T09:32:20.000Z",
+    "updatedAt": "2024-07-09T13:08:57.000Z",
+    "category": {
+      "id": 3,
+      "name": "shoes",
+      "image": "https://api.escuelajs.co/api/v1/files/1119.png",
+      "creationAt": "2024-07-08T23:29:11.000Z",
+      "updatedAt": "2024-07-09T12:05:13.000Z"
+    }
+  },
+  {
+    "id": "11",
+    "title": "Sweater",
+    "price": 25,
+    "description": "A cozy woolen sweater.",
+    "images": [
+      "https://img.freepik.com/premium-photo/black-hoodie-mockup-with-hood-pocket-isolated-white-background_124507-29140.jpg?ga=GA1.1.1183969259.1714509484&semt=sph"
+    ],
+    "creationAt": "2024-07-10T09:32:20.000Z",
+    "updatedAt": "2024-07-10T13:08:57.000Z",
+    "category": {
+      "id": 1,
+      "name": "clothes",
+      "image": "https://api.escuelajs.co/api/v1/files/2220.png",
+      "creationAt": "2024-07-08T23:29:11.000Z",
+      "updatedAt": "2024-07-09T12:05:13.000Z"
+    }
+  },
+  {
+    "id": "12",
+    "title": "Dress",
+    "price": 45,
+    "description": "A beautiful summer dress.",
+    "images": [
+      "https://img.freepik.com/free-photo/graphic-woman-dress-trendy-design-white-background_460848-13623.jpg?ga=GA1.1.1183969259.1714509484&semt=sph"
+    ],
+    "creationAt": "2024-07-10T09:32:20.000Z",
+    "updatedAt": "2024-07-10T13:08:57.000Z",
+    "category": {
+      "id": 1,
+      "name": "clothes",
+      "image": "https://api.escuelajs.co/api/v1/files/2220.png",
+      "creationAt": "2024-07-08T23:29:11.000Z",
+      "updatedAt": "2024-07-09T12:05:13.000Z"
+    }
+  },
+  {
+    "id": "13",
+    "title": "Skirt",
+    "price": 20,
+    "description": "A stylish mini skirt.",
+    "images": [
+      "https://img.freepik.com/premium-photo/black-skirt-with-white-polka-dots_156139-2056.jpg?ga=GA1.1.1183969259.1714509484&semt=sph"
+    ],
+    "creationAt": "2024-07-10T09:32:20.000Z",
+    "updatedAt": "2024-07-10T13:08:57.000Z",
+    "category": {
+      "id": 1,
+      "name": "clothes",
+      "image": "https://api.escuelajs.co/api/v1/files/2220.png",
+      "creationAt": "2024-07-08T23:29:11.000Z",
+      "updatedAt": "2024-07-09T12:05:13.000Z"
+    }
+  },
+  {
+    "id": "14",
+    "title": "Blazer",
+    "price": 75,
+    "description": "A formal business blazer.",
+    "images": [
+      "https://img.freepik.com/free-photo/pink-jacket_1203-7708.jpg?ga=GA1.1.1183969259.1714509484&semt=sph"
+    ],
+    "creationAt": "2024-07-10T09:32:20.000Z",
+    "updatedAt": "2024-07-10T13:08:57.000Z",
+    "category": {
+      "id": 1,
+      "name": "clothes",
+      "image": "https://api.escuelajs.co/api/v1/files/2220.png",
+      "creationAt": "2024-07-08T23:29:11.000Z",
+      "updatedAt": "2024-07-09T12:05:13.000Z"
+    }
+  },
+  {
+    "id": "15",
+    "title": "Bed",
+    "price": 500,
+    "description": "A king-size wooden bed.",
+    "images": [
+      "https://img.freepik.com/free-psd/front-view-room-with-bed-modern-wooden-night-tables-mockup_176382-1962.jpg?ga=GA1.1.1183969259.1714509484&semt=sph"
+    ],
+    "creationAt": "2024-07-10T09:32:20.000Z",
+    "updatedAt": "2024-07-10T13:08:57.000Z",
+    "category": {
+      "id": 2,
+      "name": "furniture",
+      "image": "https://api.escuelajs.co/api/v1/files/2220.png",
+      "creationAt": "2024-07-08T23:29:11.000Z",
+      "updatedAt": "2024-07-09T12:05:13.000Z"
+    }
+  },
+  {
+    "id": "16",
+    "title": "Bookshelf",
+    "price": 150,
+    "description": "A large wooden bookshelf.",
+    "images": [
+      "https://img.freepik.com/free-vector/empty-wooden-bookshelves-wall-shelves-books_107791-2247.jpg?ga=GA1.1.1183969259.1714509484&semt=sph"
+    ],
+    "creationAt": "2024-07-10T09:32:20.000Z",
+    "updatedAt": "2024-07-10T13:08:57.000Z",
+    "category": {
+      "id": 2,
+      "name": "furniture",
+      "image": "https://api.escuelajs.co/api/v1/files/2220.png",
+      "creationAt": "2024-07-08T23:29:11.000Z",
+      "updatedAt": "2024-07-09T12:05:13.000Z"
+    }
+  },
+  {
+    "id": "17",
+    "title": "Coffee Table",
+    "price": 100,
+    "description": "A stylish glass coffee table.",
+    "images": [
+      "https://img.freepik.com/premium-photo/high-angle-view-coffee-table_1048944-6833824.jpg?ga=GA1.1.1183969259.1714509484&semt=ais_user"
+    ],
+    "creationAt": "2024-07-10T09:32:20.000Z",
+    "updatedAt": "2024-07-10T13:08:57.000Z",
+    "category": {
+      "id": 2,
+      "name": "furniture",
+      "image": "https://api.escuelajs.co/api/v1/files/2220.png",
+      "creationAt": "2024-07-08T23:29:11.000Z",
+      "updatedAt": "2024-07-09T12:05:13.000Z"
+    }
+  },
+  {
+    "id": "18",
+    "title": "Wardrobe",
+    "price": 350,
+    "description": "A spacious wooden wardrobe.",
+    "images": [
+      "https://img.freepik.com/free-vector/realistic-wardrobe-with-clothes_52683-72860.jpg?ga=GA1.1.1183969259.1714509484&semt=sph"
+    ],
+    "creationAt": "2024-07-10T09:32:20.000Z",
+    "updatedAt": "2024-07-10T13:08:57.000Z",
+    "category": {
+      "id": 2,
+      "name": "furniture",
+      "image": "https://api.escuelajs.co/api/v1/files/2220.png",
+      "creationAt": "2024-07-08T23:29:11.000Z",
+      "updatedAt": "2024-07-09T12:05:13.000Z"
+    }
+  },
+  {
+    "id": "19",
+    "title": "Formal Shoes",
+    "price": 120,
+    "description": "A pair of formal leather shoes.",
+    "images": [
+      "https://img.freepik.com/free-vector/realistic-pare-black-shiny-leather-male-shoes-isolated-white-background-vector-illustration_1284-81463.jpg?ga=GA1.1.1183969259.1714509484&semt=ais_user"
+    ],
+    "creationAt": "2024-07-10T09:32:20.000Z",
+    "updatedAt": "2024-07-10T13:08:57.000Z",
+    "category": {
+      "id": 3,
+      "name": "shoes",
+      "image": "https://api.escuelajs.co/api/v1/files/2220.png",
+      "creationAt": "2024-07-08T23:29:11.000Z",
+      "updatedAt": "2024-07-09T12:05:13.000Z"
+    }
+  },
+  {
+    "id": "20",
+    "title": "Slippers",
+    "price": 20,
+    "description": "Comfortable indoor slippers.",
+    "images": [
+      "https://img.freepik.com/premium-photo/white-shoe-isolated-white-background-with-clipping-path_281691-4070.jpg?ga=GA1.1.1183969259.1714509484&semt=sph"
+    ],
+    "creationAt": "2024-07-10T09:32:20.000Z",
+    "updatedAt": "2024-07-10T13:08:57.000Z",
+    "category": {
+      "id": 3,
+      "name": "shoes",
+      "image": "https://api.escuelajs.co/api/v1/files/2220.png",
+      "creationAt": "2024-07-08T23:29:11.000Z",
+      "updatedAt": "2024-07-09T12:05:13.000Z"
+    }
+  }
+]

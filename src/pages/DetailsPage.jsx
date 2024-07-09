@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
-import axios from "axios";
-import Nav from "../componenet/Nav";
+import { useEffect, useState } from 'react';
+import { Link, useParams } from 'react-router-dom';
+import axios from 'axios';
+import Nav from '../componenet/Nav';
 
 function Detailpage() {
   const { id } = useParams();
@@ -9,7 +9,7 @@ function Detailpage() {
 
   useEffect(() => {
     axios
-      .get(`https://api.escuelajs.co/api/v1/products/${id}`)
+      .get(`https://668a90262c68eaf3211d2977.mockapi.io/products/${id}`)
       .then((response) => {
         console.log(response.data);
         setViewDetails(response.data);
@@ -45,7 +45,7 @@ function Detailpage() {
                   src={
                     viewDetails.images && viewDetails.images.length > 0
                       ? viewDetails.images[0]
-                      : "https://via.placeholder.com/150"
+                      : 'https://via.placeholder.com/150'
                   }
                   alt=""
                   className="block max-w-full h-auto"
@@ -83,8 +83,8 @@ function Detailpage() {
               </h3>
             </div>
             <div className="action">
-              <Link to={"/"}>
-                {" "}
+              <Link to={'/'}>
+                {' '}
                 <button
                   type="button"
                   className="cursor-pointer border border-black py-3 px-7 rounded-full text-white bg-black font-semibold text-base transition duration-200 hover:bg-[#fff] hover:text-black"
