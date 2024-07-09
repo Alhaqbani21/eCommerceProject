@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Nav from '../componenet/Nav';
 import img from '../assets/card.png';
 import { useNavigate } from 'react-router-dom';
 import { Formik, Field, Form } from 'formik';
 import * as Yup from 'yup';
+import axios from 'axios';
+import CartItem from '../componenet/CartItem';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 // Define validation schema with Yup
 const validationSchema = Yup.object().shape({
@@ -14,12 +18,84 @@ const validationSchema = Yup.object().shape({
 });
 
 function CheckoutPage() {
+  const [itemsData, setItemsData] = useState([]);
+  const [userData, setUserData] = useState(null);
+
   const navigate = useNavigate();
+  const [showPaymentModal, setShowPaymentModal] = useState(false);
+  const [isLoadingPayment, setIsLoadingPayment] = useState(false);
+  const userId = localStorage.getItem('userId');
+  const urlUser = `https://668a90262c68eaf3211d2977.mockapi.io/users/${userId}`;
+  const totalAmount = localStorage.getItem('totalAmount');
+
+  useEffect(() => {
+    if (userId && totalAmount) {
+      handleFetchUserData(userId);
+    } else {
+      throw new Error('Access denied');
+    }
+  }, [userId]);
+
+  const handleFetchUserData = (userId) => {
+    axios
+      .get(`https://668a90262c68eaf3211d2977.mockapi.io/users/${userId}`)
+      .then((response) => {
+        const userData = response.data;
+        setUserData(userData);
+        return axios.get(
+          'https://668a90262c68eaf3211d2977.mockapi.io/products'
+        );
+      })
+      .then((productResponse) => {
+        setUserData((prevUserData) => {
+          const itemsData = productResponse.data
+            .filter((item) =>
+              prevUserData.cart.some((cartItem) => cartItem.id === item.id)
+            )
+            .map((item) => {
+              const cartItem = prevUserData.cart.find(
+                (cartItem) => cartItem.id === item.id
+              );
+              return { ...item, qty: cartItem.quantity };
+            });
+          setItemsData(itemsData);
+          return prevUserData;
+        });
+      })
+      .catch((error) => {
+        console.error('Error fetching data:', error);
+      });
+  };
 
   function handleCheckout(values) {
     console.log('Form Values:', values);
-    // Implement your checkout logic here
+    setShowPaymentModal(true);
   }
+
+  const handlePayNow = () => {
+    axios.get(urlUser).then((response) => {
+      const userData = response.data;
+      const purchasedHistory = userData.purchasedHistory || [];
+      const newPurchasedHistory = [...purchasedHistory, ...userData.cart];
+
+      axios
+        .put(urlUser, { cart: [], purchasedHistory: newPurchasedHistory })
+        .then((response) => {
+          setIsLoadingPayment(true);
+          toast.success('Order completed');
+          setTimeout(() => {
+            setIsLoadingPayment(false);
+            navigate('../');
+            localStorage.removeItem('totalAmount');
+            console.log(response.data);
+          }, 5000);
+        });
+    });
+  };
+
+  const handleCloseModal = () => {
+    setShowPaymentModal(false);
+  };
 
   return (
     <div>
@@ -27,69 +103,24 @@ function CheckoutPage() {
       <br />
       <h1 className="m-3 mx-9 text-xl font-bold">Checkout</h1>
       <br />
-      <section className="mx-3 max-sm:flex-col max-sm:w-full flex justify-around">
+      <ToastContainer />
+
+      <section className="mx-3 max-sm:flex-col max-sm:w-full flex justify-around gap-2">
         {/* product */}
         <section className="bg-white max-sm:w-[90vw] max-sm:mx-5 max-sm:p-0 h-max p-5 shadow-2xl flex flex-col rounded-lg w-[60vw]">
-          <div className="h-52 items-center overflow-hidden flex justify-around">
-            <img
-              className="w-32 h-32 rounded-xl"
-              src="https://i.pinimg.com/474x/67/a2/d0/67a2d035a6b8fc0444b92154dc995859.jpg"
-              alt=""
-            />
-
-            <div>
-              <h1 className="font-bold">Title</h1>
-              <label className="text-blue-700" htmlFor="">
-                Qty:
-                <select className="p-3" name="" id="">
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
-                  <option value="5">5</option>
-                </select>
-              </label>
-            </div>
-
-            <strong>$30</strong>
-
-            <svg
-              className="w-6 h-6 text-gray-500"
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              fill="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                fillRule="evenodd"
-                d="M8.586 2.586A2 2 0 0 1 10 2h4a2 2 0 0 1 2 2v2h3a1 1 0 1 1 0 2v12a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V8a1 1 0 0 1 0-2h3V4a2 2 0 0 1 .586-1.414ZM10 6h4V4h-4v2Zm1 4a1 1 0 1 0-2 0v8a1 1 0 1 0 2 0v-8Zm4 0a1 1 0 1 0-2 0v8a1 1 0 1 0 2 0v-8Z"
-                clipRule="evenodd"
+          <div className="flex-col w-full">
+            {itemsData.map((item) => (
+              <CartItem
+                key={item.id}
+                id={item.id}
+                title={item.title}
+                price={item.price}
+                image={item.images[0]}
+                qty={item.qty}
+                checkout={true}
               />
-            </svg>
+            ))}
           </div>
-
-          <span className="flex gap-2 mx-3">
-            <svg
-              className="w-6 h-6 text-gray-800"
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              fill="none"
-              viewBox="0 0 24 24"
-            >
-              <path
-                stroke="currentColor"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M13 7h6l2 4m-8-4v8m0-8V6a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v9h2m8 0H9m4 0h2m4 0h2v-4m0 0h-5m3.5 5.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0Zm-10 0a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0Z"
-              />
-            </svg>
-            your package will be delivered in <strong>2-4 days</strong>
-          </span>
         </section>
 
         {/* cart */}
@@ -173,34 +204,40 @@ function CheckoutPage() {
 
                 <br />
                 <div className="flex gap-3 max-sm:w-full">
-                  <label className="input input-bordered bg-white flex items-center gap-2">
-                    <Field
-                      type="text"
-                      name="dateCard"
-                      className="max-sm:w-40"
-                      placeholder="MM/YY"
-                    />
-                  </label>
-                  {errors.dateCard && touched.dateCard ? (
-                    <div className="text-red-500 text-sm">
-                      {errors.dateCard}
-                    </div>
-                  ) : null}
-                  <label className="input input-bordered bg-white flex items-center gap-2">
-                    <Field
-                      type="text"
-                      name="cvvCard"
-                      maxLength="3"
-                      className="max-sm:w-20"
-                      placeholder="cvv - - -"
-                    />
-                  </label>
-                  {errors.cvvCard && touched.cvvCard ? (
-                    <div className="text-red-500 text-sm">{errors.cvvCard}</div>
-                  ) : null}
+                  <div>
+                    <label className="input input-bordered bg-white flex items-center gap-2">
+                      <Field
+                        type="text"
+                        name="dateCard"
+                        className="max-sm:w-40"
+                        placeholder="MM/YY"
+                      />
+                    </label>
+                    {errors.dateCard && touched.dateCard ? (
+                      <div className="text-red-500 text-sm">
+                        {errors.dateCard}
+                      </div>
+                    ) : null}
+                  </div>
+                  <div>
+                    <label className="input input-bordered bg-white flex items-center gap-2">
+                      <Field
+                        type="text"
+                        name="cvvCard"
+                        maxLength="3"
+                        className="max-sm:w-20"
+                        placeholder="cvv - - -"
+                      />
+                    </label>
+                    {errors.cvvCard && touched.cvvCard ? (
+                      <div className="text-red-500 text-sm">
+                        {errors.cvvCard}
+                      </div>
+                    ) : null}
+                  </div>
                 </div>
 
-                <span>YAY! No delivery fee on your order</span>
+                <span>No delivery fee on your order</span>
                 <br />
                 <br />
                 <strong>
@@ -210,6 +247,7 @@ function CheckoutPage() {
               <button
                 type="submit"
                 className="btn bg-green-500 hover:bg-green-300 w-full"
+                disabled={isLoadingPayment}
               >
                 Pay Now
               </button>
@@ -218,6 +256,47 @@ function CheckoutPage() {
         </Formik>
       </section>
       <br />
+
+      <dialog open={showPaymentModal} id="my_modal_1" className="modal">
+        <div className="modal-box">
+          {!isLoadingPayment && (
+            <h3 className="font-bold text-lg">
+              Are you sure you want to purchase?
+            </h3>
+          )}
+          {!isLoadingPayment && (
+            <div className="py-4">
+              Amount is {localStorage.getItem('totalAmount')}$
+            </div>
+          )}
+          {isLoadingPayment && (
+            <div className="flex justify-center items-center w-full flex-col">
+              {' '}
+              <span className="text-3xl tracking-wide">Order Completed</span>
+              <iframe
+                className=""
+                src="https://lottie.host/embed/00c3e094-1572-4f1e-8b85-833a90e7069c/USdtsjKz0v.json"
+              ></iframe>
+            </div>
+          )}
+          <div className="modal-action">
+            <button
+              disabled={isLoadingPayment}
+              className="btn bg-green-500"
+              onClick={() => handlePayNow()}
+            >
+              Pay Now
+            </button>
+            <button
+              disabled={isLoadingPayment}
+              className="btn"
+              onClick={handleCloseModal}
+            >
+              Cancel
+            </button>
+          </div>
+        </div>
+      </dialog>
     </div>
   );
 }

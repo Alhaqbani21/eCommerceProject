@@ -115,19 +115,63 @@ function CartPage() {
       <br />
       <section className="mx-3 max-sm:flex-col max-sm:w-full flex justify-around gap-2">
         {/* Product List */}
+
         <div className="flex-col rounded-lg shadow-2xl w-[60%]">
-          {itemsData.map((item) => (
-            <CartItem
-              key={item.id}
-              id={item.id}
-              title={item.title}
-              price={item.price}
-              image={item.images[0]}
-              qty={item.qty}
-              onDelete={deleteProductCart}
-              onQuantityChange={updateProductQuantity}
-            />
-          ))}
+          {itemsData.length > 0 ? (
+            itemsData.map((item) => (
+              <CartItem
+                key={item.id}
+                id={item.id}
+                title={item.title}
+                price={item.price}
+                image={item.images[0]}
+                qty={item.qty}
+                onDelete={deleteProductCart}
+                onQuantityChange={updateProductQuantity}
+              />
+            ))
+          ) : (
+            <div className="m-3 mx-9 text-xl font-bold flex gap-4">
+              Cart is empty{' '}
+              <svg
+                className="w-7"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+                <g
+                  id="SVGRepo_tracerCarrier"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                ></g>
+                <g id="SVGRepo_iconCarrier">
+                  {' '}
+                  <path
+                    d="M2.20164 18.4695L10.1643 4.00506C10.9021 2.66498 13.0979 2.66498 13.8357 4.00506L21.7984 18.4695C22.4443 19.6428 21.4598 21 19.9627 21H4.0373C2.54022 21 1.55571 19.6428 2.20164 18.4695Z"
+                    stroke="#E47732"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  ></path>{' '}
+                  <path
+                    d="M12 9V13"
+                    stroke="#E47732"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  ></path>{' '}
+                  <path
+                    d="M12 17.0195V17"
+                    stroke="#E47732"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  ></path>{' '}
+                </g>
+              </svg>
+            </div>
+          )}
         </div>
 
         {/* Cart Summary */}
