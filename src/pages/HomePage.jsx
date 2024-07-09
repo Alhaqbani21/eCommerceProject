@@ -128,8 +128,9 @@ function HomePage() {
           </p>
         </div>
         <section className="flex h-80 gap-2">
-          {category.map((e) => (
+          {category.map((e, index) => (
             <button
+              key={e.index}
               onClick={() => {
                 location.href = "#1";
                 handleCategories(e.id);
@@ -204,7 +205,7 @@ function HomePage() {
                       />
                     </Link>
                     <span
-                      style={{ display: e.discount == "" ? none : "" }}
+                      style={{ display: e.discount == "" ? "none" : "" }}
                       className="absolute top-2 left-2 bg-orange-500 text-white text-xs font-semibold px-2 py-1 rounded"
                     >
                       {e.discount}
