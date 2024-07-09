@@ -14,7 +14,7 @@ function HomePage() {
 
   React.useEffect(() => {
     axios
-      .get('https://665737379f970b3b36c86978.mockapi.io/login')
+      .get('https://668a90262c68eaf3211d2977.mockapi.io/products')
       .then((res) => {
         let array = [];
         setdata(res.data);
@@ -117,15 +117,17 @@ function HomePage() {
             +{data.length} <br /> Unique product
           </p>
         </div>
-        <section className="flex gap-2">
+        <section className="flex h-80 gap-2">
           {category.map((e) => (
-            <div
-              key={e.id}
+            <button
+              onClick={() => {
+                handleCategories(e.id);
+              }}
               className="border hover:scale-105  bg-base-200 rounded-xl overflow-hidden"
             >
-              <img className="w-60" src={e.image} alt="" />
-              <h2>{e.name}</h2>
-            </div>
+              <img className="w-60 h-72" src={e.image} alt="" />
+              <h2 className="font-bold text-center">{e.name}</h2>
+            </button>
           ))}
         </section>
       </div>
