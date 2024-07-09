@@ -76,7 +76,18 @@ function CheckoutPage() {
     axios.get(urlUser).then((response) => {
       const userData = response.data;
       const purchasedHistory = userData.purchasedHistory || [];
-      const newPurchasedHistory = [...purchasedHistory, ...userData.cart];
+
+      // date today
+      const currentDate = new Date();
+      const formattedDate = `${
+        currentDate.getMonth() + 1
+      }/${currentDate.getDate()}/${currentDate.getFullYear()}`;
+
+      // include date
+      const newPurchasedHistory = [
+        ...purchasedHistory,
+        ...userData.cart.map((item) => ({ ...item, date: formattedDate })),
+      ];
 
       axios
         .put(urlUser, { cart: [], purchasedHistory: newPurchasedHistory })
@@ -89,6 +100,10 @@ function CheckoutPage() {
             localStorage.removeItem('totalAmount');
             console.log(response.data);
           }, 5000);
+        })
+        .catch((error) => {
+          console.error('Error updating purchased history:', error);
+          toast.error('Failed to complete order');
         });
     });
   };

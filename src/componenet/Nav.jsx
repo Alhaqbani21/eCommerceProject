@@ -1,7 +1,20 @@
-import React from "react";
-import { Link } from "react-router-dom";
 import img from "../assets/LogoNew.png";
+import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
+// import img from '../assets/logo.png'
+import { useDispatch, useSelector } from "react-redux";
+import { fetchCart } from "../features/cartSlice";
+
 export default function Nav() {
+  const dispatch = useDispatch();
+  const cartItems = useSelector((state) => state.cart.items);
+  const userId = localStorage.getItem("userId");
+
+  useEffect(() => {
+    if (userId) {
+      dispatch(fetchCart(userId));
+    }
+  }, [dispatch, userId]);
   return (
     <div className="navbar font-mono ">
       <div className="flex-1 navbar-start">
@@ -37,8 +50,8 @@ export default function Nav() {
         </ul>
 
         <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
-          <div className="indicator">
-            <Link to={"/cart"}>
+          <Link to={"/cart"}>
+            <div className="indicator">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-5 w-5"
@@ -53,12 +66,11 @@ export default function Nav() {
                   d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
                 />
               </svg>{" "}
-            </Link>
-
-            <span className="badge badge-sm text-white indicator-item bg-[#E47732]">
-              8
-            </span>
-          </div>
+              <span className="badge badge-sm text-white indicator-item bg-[#E47732]">
+                {cartItems.length}
+              </span>
+            </div>
+          </Link>
         </div>
       </div>
     </div>

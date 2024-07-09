@@ -5,12 +5,15 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useDispatch } from 'react-redux';
+import { fetchCart } from '../features/cartSlice';
 
 function CartPage() {
   const navigate = useNavigate();
   const [userData, setUserData] = useState(null);
   const [itemsData, setItemsData] = useState([]);
   const userId = localStorage.getItem('userId');
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (userId) {
@@ -66,6 +69,7 @@ function CartPage() {
         setItemsData(updatedItemsData);
         toast.success('Item deleted');
         handleFetchUserData();
+        dispatch(fetchCart(userId));
       })
       .catch((error) => {
         console.error('Error deleting item from cart:', error);

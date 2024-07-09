@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { CiLogout } from "react-icons/ci";
 import { array } from "yup";
+import Nav from "../componenet/Nav";
 
 function OrderHistory() {
   const [prodect, setProdect] = useState([]);
@@ -40,7 +41,7 @@ function OrderHistory() {
             // setIsLoding(true);
             setProdect(array);
           });
-        console.log(prodect);
+        // console.log(prodect);
       })
       .catch(function (error) {
         // handle error
@@ -54,6 +55,7 @@ function OrderHistory() {
   return (
     <>
       {/* {isLoading ? ( */}
+      <Nav />
       <div className="bg-gray-100 min-h-screen p-4">
         <div className="max-w-6xl mx-auto">
           <div className="bg-white shadow rounded-lg p-6">
@@ -86,37 +88,44 @@ function OrderHistory() {
                   </Link>
                 </nav>
               </div>
-              {/* {console.log(prodect)} */}
-              {/* {console.log(user)} */}
+
               {/* Main Content */}
               <div className="col-span-9">
                 <div className="bg-gray-50 p-[4em] rounded-lg shadow">
                   {/* Personal Information Section */}
-                  <div className="bg-white p-4 rounded-lg shadow mb-6">
-                    <div className="flex flex-col justify-between items-center mb-4">
-                      {prodect.map((item) => (
-                        <div className="card card-side bg-base-100 shadow-xl mb-8  flex  mx-auto  max-sm:flex-col max-sm:w-[16rem]  max-sm:mx-auto ">
-                          {console.log(item)}
-                          <figure className="w-1/4  max-sm:w-full">
-                            <img
-                              className="w-full h-full object-cover rounded-md "
-                              src={item.img}
-                              // src="https://cdn.pixabay.com/photo/2020/09/23/20/28/headphones-5596990_640.jpg"
-                              alt=""
-                            />
-                          </figure>
-                          <div className="card-body  ">
-                            <h2 className="card-title">{item.title}</h2>
-                            <p>{/* {item.description} */}</p>
-                            <p className="text-[#e18c58]">
-                              ${}
-                              {item.total}
-                            </p>
+                  {prodect.length == 0 ? (
+                    <>
+                      <h1 className="text-center">
+                        There are no previous requests
+                      </h1>
+                    </>
+                  ) : (
+                    <div className="bg-white p-4 rounded-lg shadow mb-6">
+                      <div className="flex flex-col justify-between items-center mb-4">
+                        {prodect.map((item) => (
+                          <div className="card card-side bg-base-100 shadow-xl mb-8  flex  mx-auto  max-sm:flex-col max-sm:w-[16rem]  max-sm:mx-auto ">
+                            {console.log(item)}
+                            <figure className="w-1/4  max-sm:w-full">
+                              <img
+                                className="w-full h-full object-cover rounded-md "
+                                src={item.img}
+                                // src="https://cdn.pixabay.com/photo/2020/09/23/20/28/headphones-5596990_640.jpg"
+                                alt=""
+                              />
+                            </figure>
+                            <div className="card-body  ">
+                              <h2 className="card-title">{item.title}</h2>
+                              <p>{/* {item.description} */}</p>
+                              <p className="text-[#e18c58]">
+                                ${}
+                                {item.total}
+                              </p>
+                            </div>
                           </div>
-                        </div>
-                      ))}
+                        ))}
+                      </div>
                     </div>
-                  </div>
+                  )}
                 </div>
               </div>
             </div>
