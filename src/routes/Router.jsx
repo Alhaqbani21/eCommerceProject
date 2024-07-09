@@ -9,8 +9,6 @@ import DetailsPage from "../pages/DetailsPage";
 import CartPage from "../pages/CartPage";
 import CheckoutPage from "../pages/CheckoutPage";
 import ProfilePage from "../pages/ProfilePage";
-import About from "../pages/About";
-import OrderHistory from "../pages/OrderHistory";
 
 const router = createBrowserRouter([
   {
@@ -41,15 +39,6 @@ const router = createBrowserRouter([
   {
     path: "/profile",
     element: <ProfilePage />,
-  },
-
-  {
-    path: "/about",
-    element: <About />,
-  },
-  {
-    path: "/OrderHistory",
-    element: <OrderHistory />,
   },
 ]);
 
