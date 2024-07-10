@@ -97,44 +97,7 @@ function ProfilePage() {
             <div className="grid grid-cols-12 gap-4">
               {/* Sidebar */}
               <div className="col-span-3">
-                {/* nav for mobile */}
-                <div className="navbar bg-base-100 lg:hidden">
-                  <div className="navbar-start"></div>
-                  <div className="navbar-center  lg:flex">
-                    <ul className="menu menu-horizontal px-1">
-                      <li>
-                        <Link
-                          to={"../profile"}
-                          className="p-2 rounded bg-blue-100 text-[#E47732] font-semibold"
-                        >
-                          My Profile
-                        </Link>
-                      </li>
-                      <li>
-                        <Link
-                          to={"/OrderHistory"}
-                          className="p-2 rounded hover:bg-gray-200"
-                        >
-                          Order History
-                        </Link>
-                      </li>
-                      <li>
-                        <Link
-                          onClick={() => {
-                            localStorage.clear();
-                            navigate("../");
-                          }}
-                          className="p-2 rounded hover:bg-gray-200 flex gap-2 items-center"
-                        >
-                          Logout <CiLogout className="text-red-500" />
-                        </Link>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-                {/* end */}
-
-                <nav className="flex flex-col space-y-2 max-sm:hidden">
+                <nav className="flex flex-col space-y-2 ">
                   <Link
                     to={"../profile"}
                     className="p-2 rounded bg-blue-100 text-[#E47732] font-semibold"
