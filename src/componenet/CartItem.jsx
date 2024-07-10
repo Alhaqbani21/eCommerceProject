@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 function CartItem({
   id,
@@ -12,13 +12,13 @@ function CartItem({
 }) {
   return (
     <div className="bg-white max-sm:w-[90vw] max-sm:mx-5 max-sm:p-0 h-max p-5 flex flex-col w-full border-b-[1px]">
-      <div className="h-52 items-center overflow-hidden flex justify-around">
+      <div className="h-52 items-center overflow-hidden max-sm:w-[80vw] flex justify-around">
         <img className="w-32 h-32 rounded-xl" src={image} alt={title} />
 
         <div>
           <h1 className="font-bold">{title}</h1>
-          <label className="text-blue-700">
-            Qty:
+          <label className="">
+            quantity:
             {checkout !== true ? (
               <select
                 className="p-3"
@@ -38,7 +38,7 @@ function CartItem({
           </label>
         </div>
 
-        <strong>${qty*price}</strong>
+        <strong>${qty * price}</strong>
         {onDelete && (
           <button
             onClick={() => onDelete(id)}
@@ -62,8 +62,6 @@ function CartItem({
           </button>
         )}
       </div>
-
-
     </div>
   );
 }

@@ -1,18 +1,18 @@
-import React, { useState, useEffect } from 'react';
-import Nav from '../componenet/Nav';
-import CartItem from '../componenet/CartItem';
-import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import { useDispatch } from 'react-redux';
-import { fetchCart } from '../features/cartSlice';
+import React, { useState, useEffect } from "react";
+import Nav from "../componenet/Nav";
+import CartItem from "../componenet/CartItem";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { useDispatch } from "react-redux";
+import { fetchCart } from "../features/cartSlice";
 
 function CartPage() {
   const navigate = useNavigate();
   const [userData, setUserData] = useState(null);
   const [itemsData, setItemsData] = useState([]);
-  const userId = localStorage.getItem('userId');
+  const userId = localStorage.getItem("userId");
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -28,7 +28,7 @@ function CartPage() {
         const userData = response.data;
         setUserData(userData);
         return axios.get(
-          'https://668a90262c68eaf3211d2977.mockapi.io/products'
+          "https://668a90262c68eaf3211d2977.mockapi.io/products"
         );
       })
       .then((productResponse) => {
@@ -48,7 +48,7 @@ function CartPage() {
         });
       })
       .catch((error) => {
-        console.error('Error fetching data:', error);
+        console.error("Error fetching data:", error);
       });
   };
 
@@ -67,13 +67,13 @@ function CartPage() {
         setUserData(updatedUserData);
         const updatedItemsData = itemsData.filter((item) => item.id !== itemId);
         setItemsData(updatedItemsData);
-        toast.success('Item deleted');
+        toast.success("Item deleted");
         handleFetchUserData();
         dispatch(fetchCart(userId));
       })
       .catch((error) => {
-        console.error('Error deleting item from cart:', error);
-        toast.error('Failed to delete item');
+        console.error("Error deleting item from cart:", error);
+        toast.error("Failed to delete item");
       });
   };
 
@@ -100,12 +100,12 @@ function CartPage() {
           return item;
         });
         setItemsData(updatedItemsData);
-        toast.success('Quantity updated');
+        toast.success("Quantity updated");
         handleFetchUserData();
       })
       .catch((error) => {
-        console.error('Error updating quantity:', error);
-        toast.error('Failed to update quantity');
+        console.error("Error updating quantity:", error);
+        toast.error("Failed to update quantity");
       });
   };
 
@@ -121,44 +121,44 @@ function CartPage() {
         {/* Product List */}
 
         <div className="flex-col rounded-lg shadow-2xl w-[60%]">
-       {itemsData.length > 0 ?     <> 
-           { itemsData.map((item) => (
-        <CartItem
-                key={item.id}
-                id={item.id}
-                title={item.title}
-                price={item.price}
-                image={item.images[0]}
-                qty={item.qty}
-                onDelete={deleteProductCart}
-                onQuantityChange={updateProductQuantity}
-              />
-              
-            ))}
-                  <span className="flex gap-2 mx-3">
-        <svg
-          className="w-6 h-6 text-gray-800"
-          aria-hidden="true"
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          fill="none"
-          viewBox="0 0 24 24"
-        >
-          <path
-            stroke="currentColor"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            d="M13 7h6l2 4m-8-4v8m0-8V6a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v9h2m8 0H9m4 0h2m4 0h2v-4m0 0h-5m3.5 5.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0Zm-10 0a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0Z"
-          />
-        </svg>
-        your package will be delivered in <strong>2-4 days</strong>
-      </span>
-                    </>    
-: (
-            <div className="m-3 mx-9 text-xl font-bold flex gap-4">
-              Cart is empty{' '}
+          {itemsData.length > 0 ? (
+            <>
+              {itemsData.map((item) => (
+                <CartItem
+                  key={item.id}
+                  id={item.id}
+                  title={item.title}
+                  price={item.price}
+                  image={item.images[0]}
+                  qty={item.qty}
+                  onDelete={deleteProductCart}
+                  onQuantityChange={updateProductQuantity}
+                />
+              ))}
+              <span className="flex max-sm:w-[100vw] max-sm: gap-2 mx-3">
+                <svg
+                  className="w-6 h-6 text-gray-800"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke="currentColor"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M13 7h6l2 4m-8-4v8m0-8V6a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v9h2m8 0H9m4 0h2m4 0h2v-4m0 0h-5m3.5 5.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0Zm-10 0a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0Z"
+                  />
+                </svg>
+                your package will be delivered in <strong>2-4 days</strong>
+              </span>
+            </>
+          ) : (
+            <div className="m-3 mx-9 text-center justify-center text-xl font-bold flex gap-4">
+              Cart is empty{" "}
               <svg
                 className="w-7"
                 viewBox="0 0 24 24"
@@ -172,28 +172,28 @@ function CartPage() {
                   strokeLinejoin="round"
                 ></g>
                 <g id="SVGRepo_iconCarrier">
-                  {' '}
+                  {" "}
                   <path
                     d="M2.20164 18.4695L10.1643 4.00506C10.9021 2.66498 13.0979 2.66498 13.8357 4.00506L21.7984 18.4695C22.4443 19.6428 21.4598 21 19.9627 21H4.0373C2.54022 21 1.55571 19.6428 2.20164 18.4695Z"
                     stroke="#E47732"
                     strokeWidth="2"
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                  ></path>{' '}
+                  ></path>{" "}
                   <path
                     d="M12 9V13"
                     stroke="#E47732"
                     strokeWidth="2"
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                  ></path>{' '}
+                  ></path>{" "}
                   <path
                     d="M12 17.0195V17"
                     stroke="#E47732"
                     strokeWidth="2"
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                  ></path>{' '}
+                  ></path>{" "}
                 </g>
               </svg>
             </div>
@@ -212,16 +212,17 @@ function CartPage() {
                     (cartItem) => cartItem.id === item.id
                   );
                   localStorage.setItem(
-                    'totalAmount',
+                    "totalAmount",
                     total + item.price * cartItem.quantity
                   );
                   return total + item.price * cartItem.quantity;
                 }, 0)}
             </strong>
           </div>
+          <br />
           <button
             onClick={() => {
-              navigate('../checkout');
+              navigate("../checkout");
             }}
             className="btn bg-green-500 hover:bg-green-300 w-full"
             disabled={!userData || itemsData.length === 0}
