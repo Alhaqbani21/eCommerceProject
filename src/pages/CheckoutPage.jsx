@@ -105,7 +105,7 @@ function CheckoutPage() {
             navigate('../');
             localStorage.removeItem('totalAmount');
             console.log(response.data);
-          }, 5000);
+          }, 3000);
         })
         .catch((error) => {
           console.error('Error updating purchased history:', error);
@@ -304,7 +304,7 @@ function CheckoutPage() {
           <div className="modal-action">
             <button
               disabled={isLoadingPayment}
-              className="btn bg-secondary"
+              className="btn bg-green-500 hover:bg-green-300"
               onClick={() => handlePayNow()}
             >
               Pay Now
