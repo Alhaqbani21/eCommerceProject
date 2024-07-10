@@ -150,7 +150,10 @@ function ProfilePage() {
                   <Link
                     onClick={() => {
                       localStorage.clear();
-                      navigate("../");
+                      toast.info("Logout successfully");
+                      setTimeout(() => {
+                        navigate("../");
+                      }, 1000);
                     }}
                     className="p-2 rounded hover:bg-gray-200 flex gap-2 items-center"
                   >

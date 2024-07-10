@@ -93,9 +93,9 @@ function OrderHistory() {
               <div className="col-span-9 max-sm:p-0">
                 <div className="max-sm:p-0">
                   {/* Personal Information Section */}
-                  {prodect.length == 0 ? (
+                  {prodect == undefined ? (
                     <>
-                      <h1 className="text-center">
+                      <h1 className="text-center mt-9">
                         There are no previous requests
                       </h1>
                     </>
