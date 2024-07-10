@@ -125,7 +125,7 @@ function CheckoutPage() {
       <br />
       <h1 className="m-3 mx-9 text-xl font-bold">Checkout</h1>
       <br />
-      <ToastContainer />
+      <ToastContainer autoClose={2000} />
 
       <section className="mx-3  max-sm:flex-col  flex justify-around gap-2">
         {/* product */}

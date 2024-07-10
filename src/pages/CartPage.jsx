@@ -112,7 +112,7 @@ function CartPage() {
   return (
     <div>
       <Nav />
-      <ToastContainer />
+      <ToastContainer autoClose={2000} />
 
       <br />
       <h1 className="m-3 mx-9 text-xl font-bold">Shopping Cart</h1>
@@ -135,7 +135,7 @@ function CartPage() {
                   onQuantityChange={updateProductQuantity}
                 />
               ))}
-              <span className="flex max-sm:w-[100vw] max-sm: gap-2 mx-3">
+              <span className="flex gap-2 mx-3">
                 <svg
                   className="w-6 h-6 text-gray-800"
                   aria-hidden="true"
@@ -157,8 +157,8 @@ function CartPage() {
               </span>
             </>
           ) : (
-            <div className="m-3 mx-9 text-center justify-center text-xl font-bold flex gap-4">
-              Cart is empty{" "}
+            <div className="m-3 mx-9 text-xl font-bold flex gap-4">
+              Cart is empty{' '}
               <svg
                 className="w-7"
                 viewBox="0 0 24 24"
