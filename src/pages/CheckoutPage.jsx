@@ -100,10 +100,6 @@ function CheckoutPage() {
         .put(urlUser, { cart: [], purchasedHistory: newPurchasedHistory })
         .then((response) => {
           setIsLoadingPayment(true);
-<<<<<<< HEAD
-          toast.success("Order completed");
-=======
->>>>>>> abdulaziz
           setTimeout(() => {
             setIsLoadingPayment(false);
             navigate("../");
