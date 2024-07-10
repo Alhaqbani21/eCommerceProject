@@ -1,20 +1,20 @@
-import Nav from "../componenet/Nav";
-import img from "../assets/card.png";
-import { useNavigate } from "react-router-dom";
-import { Formik, Field, Form } from "formik";
-import * as Yup from "yup";
-import axios from "axios";
-import CartItem from "../componenet/CartItem";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import { useState, useEffect } from "react";
+import Nav from '../componenet/Nav';
+import img from '../assets/card.png';
+import { useNavigate } from 'react-router-dom';
+import { Formik, Field, Form } from 'formik';
+import * as Yup from 'yup';
+import axios from 'axios';
+import CartItem from '../componenet/CartItem';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { useState, useEffect } from 'react';
 
 // Define validation schema with Yup
 const validationSchema = Yup.object().shape({
-  nameCard: Yup.string().required("Name on card is required"),
-  cardNumber: Yup.string().required("Card number is required"),
-  dateCard: Yup.string().required("Date is required"),
-  cvvCard: Yup.string().required("CVV is required"),
+  nameCard: Yup.string().required('Name on card is required'),
+  cardNumber: Yup.string().required('Card number is required'),
+  dateCard: Yup.string().required('Date is required'),
+  cvvCard: Yup.string().required('CVV is required'),
 });
 
 function CheckoutPage() {
@@ -24,15 +24,15 @@ function CheckoutPage() {
   const navigate = useNavigate();
   const [showPaymentModal, setShowPaymentModal] = useState(false);
   const [isLoadingPayment, setIsLoadingPayment] = useState(false);
-  const userId = localStorage.getItem("userId");
+  const userId = localStorage.getItem('userId');
   const urlUser = `https://668a90262c68eaf3211d2977.mockapi.io/users/${userId}`;
-  const totalAmount = localStorage.getItem("totalAmount");
+  const totalAmount = localStorage.getItem('totalAmount');
 
   useEffect(() => {
     if (userId && totalAmount) {
       handleFetchUserData(userId);
     } else {
-      throw new Error("Access denied");
+      throw new Error('Access denied');
     }
   }, [userId]);
 
@@ -43,7 +43,7 @@ function CheckoutPage() {
         const userData = response.data;
         setUserData(userData);
         return axios.get(
-          "https://668a90262c68eaf3211d2977.mockapi.io/products"
+          'https://668a90262c68eaf3211d2977.mockapi.io/products'
         );
       })
       .then((productResponse) => {
@@ -63,12 +63,12 @@ function CheckoutPage() {
         });
       })
       .catch((error) => {
-        console.error("Error fetching data:", error);
+        console.error('Error fetching data:', error);
       });
   };
 
   function handleCheckout(values) {
-    console.log("Form Values:", values);
+    console.log('Form Values:', values);
     setShowPaymentModal(true);
   }
 
@@ -89,7 +89,7 @@ function CheckoutPage() {
         {
           date: formattedDate,
           orderNumber: Math.floor(100000 + Math.random() * 900000),
-          total: localStorage.getItem("totalAmount"),
+          total: localStorage.getItem('totalAmount'),
           items: userData.cart.map((item) => ({
             ...item,
           })),
@@ -102,14 +102,14 @@ function CheckoutPage() {
           setIsLoadingPayment(true);
           setTimeout(() => {
             setIsLoadingPayment(false);
-            navigate("../");
-            localStorage.removeItem("totalAmount");
+            navigate('../');
+            localStorage.removeItem('totalAmount');
             console.log(response.data);
           }, 3000);
         })
         .catch((error) => {
-          console.error("Error updating purchased history:", error);
-          toast.error("Failed to complete order");
+          console.error('Error updating purchased history:', error);
+          toast.error('Failed to complete order');
         });
     });
   };
@@ -147,10 +147,10 @@ function CheckoutPage() {
         {/* cart */}
         <Formik
           initialValues={{
-            nameCard: "",
-            cardNumber: "",
-            dateCard: "",
-            cvvCard: "",
+            nameCard: '',
+            cardNumber: '',
+            dateCard: '',
+            cvvCard: '',
           }}
           validationSchema={validationSchema}
           onSubmit={handleCheckout}
@@ -262,7 +262,7 @@ function CheckoutPage() {
                 <br />
                 <br />
                 <strong>
-                  Total Payable {localStorage.getItem("totalAmount")}$
+                  Total Payable {localStorage.getItem('totalAmount')}$
                 </strong>
               </div>
               <button
@@ -288,12 +288,12 @@ function CheckoutPage() {
           {!isLoadingPayment && (
             <div className="py-4">
               {}
-              Amount is {localStorage.getItem("totalAmount")}$
+              Amount is {localStorage.getItem('totalAmount')}$
             </div>
           )}
           {isLoadingPayment && (
             <div className="flex justify-center items-center w-full flex-col">
-              {" "}
+              {' '}
               <span className="text-3xl tracking-wide">Order Completed</span>
               <iframe
                 className=""
