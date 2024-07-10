@@ -20,6 +20,7 @@ function HomePage() {
   const [userData, setUserData] = useState([]);
   const userId = localStorage.getItem('userId');
   const dispatch = useDispatch();
+  const [isCategory, setisCategory] = useState(false);
 
   useEffect(() => {
     axios
@@ -95,6 +96,8 @@ function HomePage() {
       }
     });
     setFilteredData(array);
+    setisCategory(true);
+
     // const myRef = useRef();
   };
 
@@ -207,7 +210,7 @@ function HomePage() {
         </section>
       </div>
       <div className="flex w-full flex-col bg-white py-10">
-        <div className="divider"></div>
+        <div id="1" className="divider"></div>
       </div>
 
       <div className="pb-4 bg-white">
@@ -251,12 +254,22 @@ function HomePage() {
               />
             </svg>
           </button>
+<<<<<<< HEAD
           {category.length > 1 && (
             <button
               onClick={() => {
                 searchFilterData();
               }}
               className="mx-2 btn bg-[#E47732] hover:bg-[#E97739] text-white"
+=======
+          {isCategory === true && (
+            <button
+              onClick={() => {
+                searchFilterData();
+                setisCategory(false);
+              }}
+              className="mx-2 btn btn-primary  text-white"
+>>>>>>> abdulaziz
             >
               All products
             </button>
@@ -266,7 +279,7 @@ function HomePage() {
 
       <div
         // ref={divRef}
-        id="1"
+
         className="flex flex-wrap justify-center items-center bg-white gap-10 py-5"
       >
         {filteredData.length > 0 ? (

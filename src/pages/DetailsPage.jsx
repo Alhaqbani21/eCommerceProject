@@ -143,6 +143,7 @@ function Detailpage() {
               <button
                 className="btn rounded-3xl text-lg bg-[#E47732] hover:bg-[#E97739] text-white self-end w-[10em] ml-[22em]"
                 onClick={() => handleAddToCart(viewDetails)}
+                disabled={!userId}
               >
                 Add to Cart
               </button>
