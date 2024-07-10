@@ -18,7 +18,7 @@ function About() {
       {/* Hero */}
       <div className=" bg-base flex max-sm:flex-col flex-row-reverse justify-around  items-center">
         <div className=" ">
-          <img className="" src={img} alt="" />
+          <img className="" src='https://mir-s3-cdn-cf.behance.net/projects/404/5f1b7557123941.Y3JvcCwyOTkwLDIzNDAsMjU4LDA.jpg' alt="" />
         </div>
         {/* <div className="hero-content text-neutral-content text-center"> */}
         <div className="">

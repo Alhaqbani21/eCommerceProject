@@ -86,9 +86,16 @@ function CheckoutPage() {
       // include date
       const newPurchasedHistory = [
         ...purchasedHistory,
-        ...userData.cart.map((item) => ({ ...item, date: formattedDate })),
+        {
+          date: formattedDate,
+          orderNumber: Math.floor(100000 + Math.random() * 900000),
+          total: localStorage.getItem("totalAmount"),
+          items: userData.cart.map((item) => ({
+            ...item,
+          })),
+        },
       ];
-
+      // console.log(newPurchasedHistory);
       axios
         .put(urlUser, { cart: [], purchasedHistory: newPurchasedHistory })
         .then((response) => {
