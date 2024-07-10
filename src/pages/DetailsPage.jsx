@@ -91,11 +91,14 @@ function Detailpage() {
                   alt=""
                   className="block max-w-full h-auto"
                 />
-              </div>
-              <div className="featured_text">
+                <h1 className="m-0 p-0 font-extrabold text-4xl leading-tight text-gray-900 mt-8">
+                  {viewDetails.title}
+                </h1>
                 <p className="price font-bold text-xl text-gray-900 mt-1">
                   ${viewDetails.price}
                 </p>
+              </div>
+              <div className="featured_text">
                 {/* <span className="text-accent">
                   discount {viewDetails.discount}
                 </span>
@@ -105,13 +108,11 @@ function Detailpage() {
             </div>
             <div className="half flex-1 p-4">
               <div className="description mb-6">
-                <p className="sub m-0 p-0 font-light text-xl uppercase text-gray-600 mb-1 mt-1">
+                <p className="sub m-0 p-0 font-light text-xl uppercase text-gray-600  mt-1">
                   {viewDetails.category?.name}
                 </p>
-                <h1 className="m-0 p-0 font-extrabold text-4xl leading-tight text-gray-900 mt-8">
-                  {viewDetails.title}
-                </h1>
-                <p className="m-0  leading-7 text-base text-gray-900 mt-[1em]">
+
+                <p className="m-0  leading-7 text-base text-gray-600 ">
                   {viewDetails.description}
                 </p>
               </div>
@@ -132,15 +133,15 @@ function Detailpage() {
             <div className="action flex justify-around w-full">
               <Link to={"/"}>
                 {" "}
-                <button
+                {/* <button
                   type="button"
                   className="cursor-pointer border border-black py-3 px-7 rounded-full text-white bg-black font-semibold text-base transition duration-200 hover:bg-[#fff] hover:text-black"
                 >
                   Back to Home
-                </button>
+                </button> */}
               </Link>
               <button
-                className="btn rounded-3xl text-lg bg-[#E47732] hover:bg-[#E97739] text-white self-end"
+                className="btn rounded-3xl text-lg bg-[#E47732] hover:bg-[#E97739] text-white self-end w-[10em] ml-[22em]"
                 onClick={() => handleAddToCart(viewDetails)}
               >
                 Add to Cart

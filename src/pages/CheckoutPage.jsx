@@ -1,4 +1,3 @@
-import React, { useState, useEffect } from "react";
 import Nav from "../componenet/Nav";
 import img from "../assets/card.png";
 import { useNavigate } from "react-router-dom";
