@@ -18,7 +18,10 @@ export default function Nav() {
   return (
     <div className="navbar font-mono ">
       <div className="flex-1 max-sm:flex-auto navbar-start max-sm:navbar">
-        <img className="w-40 max-sm:w-20" src={img} alt="" />
+        <Link to={"/"}>
+          {" "}
+          <img className="w-40 max-sm:w-20" src={img} alt="" />
+        </Link>
       </div>
 
       <div className="navbar-end max-sm:navbar">
