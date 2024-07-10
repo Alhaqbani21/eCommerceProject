@@ -251,6 +251,16 @@ function HomePage() {
               />
             </svg>
           </button>
+          {category.length > 1 && (
+            <button
+              onClick={() => {
+                searchFilterData();
+              }}
+              className="mx-2 btn bg-[#E47732] hover:bg-[#E97739] text-white"
+            >
+              All products
+            </button>
+          )}
         </div>
       </div>
 
