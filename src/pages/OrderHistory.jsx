@@ -14,34 +14,34 @@ function OrderHistory() {
   useEffect(() => {
     axios
       .get(`https://668a90262c68eaf3211d2977.mockapi.io/users/${id}`)
-      .then(function (response) {
-        // handle success
+      .then(function (res) {
+        let array = [];
+        // res.data.filter((item) => {
+        // if (user.purchasedHistory.find((e) => e.id == item.id)) {
+        // total=item.price
+        // console.log(response.data.purchasedHistory);
+        // response.data.purchasedHistory.filter((e) => {
+        // console.log(e.items.findIndex((i) => i.id == item.id));
+        // let index = e.items.findIndex((i) => i.id == item.id);
+        // if (index !== -1) {
+        // console.log(res.data.purchasedHistory);
 
-        axios
-          .get("https://668a90262c68eaf3211d2977.mockapi.io/products")
-          .then((res) => {
-            let array = [];
-            res.data.filter((item) => {
-              // if (user.purchasedHistory.find((e) => e.id == item.id)) {
-              // total=item.price
-              // console.log(item.id);
-              response.data.purchasedHistory.filter((e) => {
-                if (e.id == item.id) {
-                  array.push({
-                    total: item.price * e.quantity,
-                    img: item.images,
-                    title: item.title,
-                    Qut: e.quantity,
-                  });
-                  // array.push();
-                  // console.log(item);
-                }
-              });
-            });
-            // setIsLoding(true);
-            setProdect(array);
-          });
-        // console.log(prodect);
+        // array.push({
+        //   date: e.date,
+        //   order: e.orderNumber,
+        //   total: item.price * e.items[index].quantity,
+        //   img: item.images,
+        //   title: item.title,
+        //   Qut: e.items[index].quantity,
+        // });
+
+        // array.push();
+        // console.log(e);
+        // }
+        // });
+        // });
+        // setIsLoding(true);
+        setProdect(res.data.purchasedHistory);
       })
       .catch(function (error) {
         // handle error
@@ -102,26 +102,56 @@ function OrderHistory() {
                   ) : (
                     <div className="bg-white p-4 rounded-lg shadow mb-6">
                       <div className="flex flex-col justify-between items-center mb-4">
-                        {prodect.map((item) => (
-                          <div className="card card-side bg-base-100 shadow-xl mb-8  flex  mx-auto  max-sm:flex-col max-sm:w-[16rem]  max-sm:mx-auto ">
-                            {console.log(item)}
-                            <figure className="w-1/4  max-sm:w-full">
-                              <img
-                                className="w-full h-full object-cover rounded-md "
-                                src={item.img}
-                                // src="https://cdn.pixabay.com/photo/2020/09/23/20/28/headphones-5596990_640.jpg"
-                                alt=""
-                              />
-                            </figure>
-                            <div className="card-body  ">
-                              <h2 className="card-title">{item.title}</h2>
-                              <p>{/* {item.description} */}</p>
-                              <p className="text-[#e18c58]">
-                                ${}
-                                {item.total}
-                              </p>
+                        {/* {prodect[0].date} */}
+                        {prodect.map((item, index) => (
+                          <details key={index} className="collapse  ">
+                            <summary className="collapse-title text-xl font-medium">
+                              <div
+                                //   className="card card-side bg-base-100   flex  mx-auto  max-sm:flex-col max-sm:w-[16rem]  max-sm:mx-auto "
+                                // >
+                                key={index}
+                                className="w-full text-lg border-gray-500 border-[1px] justify-between bg-base-100  p-8 rounded-md mt-8 flex "
+                              >
+                                <div className="flex-col flex">
+                                  <span>Order number</span>
+
+                                  <span>{item.orderNumber}</span>
+                                </div>
+
+                                <div className="flex-col flex">
+                                  <span>Date placed</span>
+
+                                  <span>{item.date}</span>
+                                </div>
+
+                                <div className="flex-col flex">
+                                  <span>Total amount</span>
+
+                                  <span>${item.total}</span>
+                                </div>
+
+                                <span className="btn">view order</span>
+                              </div>
+                            </summary>
+                            <div className="collapse-content">
+                              {console.log(item.items)}
+                              <div>
+                                {item.items.map((e) => (
+                                  <div className="flex w-96 justify-between border-b items-center">
+                                    <img
+                                      className="w-20"
+                                      src={e.images}
+                                      alt=""
+                                    />
+
+                                    <h1>{e.title}</h1>
+                                    <span>Qut: {e.quantity}</span>
+                                    <span>${e.price * e.quantity}</span>
+                                  </div>
+                                ))}
+                              </div>
                             </div>
-                          </div>
+                          </details>
                         ))}
                       </div>
                     </div>
