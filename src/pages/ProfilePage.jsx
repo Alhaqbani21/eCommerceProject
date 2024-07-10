@@ -90,7 +90,7 @@ function ProfilePage() {
     <>
       <Nav />
       <div className="bg-gray-100 min-h-screen p-4">
-        <ToastContainer />
+        <ToastContainer autoClose={2000} />
         <div className="max-w-6xl mx-auto">
           <div className="bg-white shadow rounded-lg p-6">
             <h1 className="text-2xl font-semibold mb-4">Account Settings</h1>
