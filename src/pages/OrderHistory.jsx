@@ -58,22 +58,22 @@ function OrderHistory() {
       <Nav />
       <div className="bg-gray-100 min-h-screen p-4">
         <div className="max-w-6xl mx-auto">
-          <div className="bg-white shadow rounded-lg p-6">
+          <div className="bg-white max-sm:p-1 shadow rounded-lg p-6">
             <h1 className="text-2xl font-semibold mb-4">Account Settings</h1>
-            <div className="grid grid-cols-12 gap-6">
+            <div className="grid grid-cols-12 max-sm:flex max-sm:flex-col gap-6">
               {/* Sidebar */}
-              <div className="col-span-3">
-                <nav className="flex flex-col space-y-2">
+              <div className="col-span-3 max-sm:w-full">
+                <nav className="flex flex-col max-sm:justify-between  max-sm:flex-row space-y-2">
                   <Link
                     to={"/Profile"}
-                    className="p-2 rounded font-semibold hover:bg-gray-200 "
+                    className="p-2 rounded max-sm:mt-1 hover:bg-gray-200 "
                   >
                     My Profile
                   </Link>
                   <Link
                     to={"/OrderHistory"}
                     href="#"
-                    className="p-2 rounded  bg-blue-100 text-[#E47732]"
+                    className="p-2 rounded font-semibold bg-blue-100 text-[#E47732]"
                   >
                     Order History
                   </Link>
@@ -90,27 +90,27 @@ function OrderHistory() {
               </div>
 
               {/* Main Content */}
-              <div className="col-span-9">
-                <div className="bg-gray-50 p-[4em] rounded-lg shadow">
+              <div className="col-span-9 max-sm:p-0">
+                <div className="max-sm:p-0">
                   {/* Personal Information Section */}
-                  {prodect.length == 0 ? (
+                  {prodect == undefined ? (
                     <>
-                      <h1 className="text-center">
+                      <h1 className="text-center mt-9">
                         There are no previous requests
                       </h1>
                     </>
                   ) : (
-                    <div className="bg-white p-4 rounded-lg shadow mb-6">
+                    <div className="bg-white  rounded-lg shadow mb-6">
                       <div className="flex flex-col justify-between items-center mb-4">
                         {/* {prodect[0].date} */}
                         {prodect.map((item, index) => (
                           <details key={index} className="collapse  ">
-                            <summary className="collapse-title text-xl font-medium">
+                            <summary className="collapse-title text-xl max-sm:p-0 font-medium">
                               <div
                                 //   className="card card-side bg-base-100   flex  mx-auto  max-sm:flex-col max-sm:w-[16rem]  max-sm:mx-auto "
                                 // >
                                 key={index}
-                                className="w-full text-lg border-gray-500 border-[1px] justify-between bg-base-100  p-8 rounded-md mt-8 flex "
+                                className="w-full max-sm:text-sm text-lg bg-gray-50 border py-[2em] max-sm:p-0 px-[4em] rounded-lg shadow justify-between  mt-8 flex "
                               >
                                 <div className="flex-col flex">
                                   <span>Order number</span>
@@ -125,19 +125,21 @@ function OrderHistory() {
                                 </div>
 
                                 <div className="flex-col flex">
-                                  <span>Total amount</span>
+                                  <span>Total</span>
 
                                   <span>${item.total}</span>
                                 </div>
 
-                                <span className="btn">view order</span>
+                                <span className="btn max-sm:m-0">
+                                  view order
+                                </span>
                               </div>
                             </summary>
                             <div className="collapse-content">
-                              {console.log(item.items)}
+                              {/* {console.log(item.items)} */}
                               <div>
                                 {item.items.map((e) => (
-                                  <div className="flex w-96 justify-between border-b items-center">
+                                  <div className="flex max-sm:mx-0 mx-10 justify-between border-b items-center">
                                     <img
                                       className="w-20"
                                       src={e.images}

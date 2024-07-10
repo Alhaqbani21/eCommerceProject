@@ -92,12 +92,12 @@ function ProfilePage() {
       <div className="bg-gray-100 min-h-screen p-4">
         <ToastContainer />
         <div className="max-w-6xl mx-auto">
-          <div className="bg-white shadow rounded-lg p-6">
+          <div className="bg-white shadow rounded-lg p-6 ">
             <h1 className="text-2xl font-semibold mb-4">Account Settings</h1>
             <div className="grid grid-cols-12 gap-4">
               {/* Sidebar */}
-              <div className="col-span-3">
-                <nav className="flex flex-col space-y-2 ">
+              <div className="col-span-3 max-sm:w-full">
+                <nav className="flex flex-col max-sm:justify-between  max-sm:flex-row space-y-2 ">
                   <Link
                     to={"../profile"}
                     className="p-2 rounded bg-blue-100 text-[#E47732] font-semibold"
@@ -113,10 +113,7 @@ function ProfilePage() {
                   <Link
                     onClick={() => {
                       localStorage.clear();
-                      toast.info("Logout successfully");
-                      setTimeout(() => {
-                        navigate("../");
-                      }, 1000);
+                      navigate("../");
                     }}
                     className="p-2 rounded hover:bg-gray-200 flex gap-2 items-center"
                   >

@@ -131,6 +131,10 @@ function HomePage() {
       {/* navBar */}
 
       <Nav />
+      {/* <button className="absolute top-4 text-xl text-black bg-yellow-400 btn right-[30vw]"> */}
+      {/* {" "}
+        sale
+      </button> */}
       <ToastContainer />
 
       {/* Hero */}
@@ -196,7 +200,7 @@ function HomePage() {
               }}
               className="border hover:scale-105  bg-base-200 rounded-xl overflow-hidden"
             >
-              <img className="w-60 h-72" src={e.image} alt="" />
+              <img className="w-60 max-sm:h-52 h-72" src={e.image} alt="" />
               <h2 className="font-bold text-center">{e.name}</h2>
             </button>
           ))}
