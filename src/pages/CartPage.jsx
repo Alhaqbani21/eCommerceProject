@@ -112,7 +112,7 @@ function CartPage() {
   return (
     <div>
       <Nav />
-      <ToastContainer />
+      <ToastContainer autoClose={2000} />
 
       <br />
       <h1 className="m-3 mx-9 text-xl font-bold">Shopping Cart</h1>
@@ -121,42 +121,42 @@ function CartPage() {
         {/* Product List */}
 
         <div className="flex-col rounded-lg shadow-2xl w-[60%]">
-       {itemsData.length > 0 ?     <> 
-           { itemsData.map((item) => (
-        <CartItem
-                key={item.id}
-                id={item.id}
-                title={item.title}
-                price={item.price}
-                image={item.images[0]}
-                qty={item.qty}
-                onDelete={deleteProductCart}
-                onQuantityChange={updateProductQuantity}
-              />
-              
-            ))}
-                  <span className="flex gap-2 mx-3">
-        <svg
-          className="w-6 h-6 text-gray-800"
-          aria-hidden="true"
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          fill="none"
-          viewBox="0 0 24 24"
-        >
-          <path
-            stroke="currentColor"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            d="M13 7h6l2 4m-8-4v8m0-8V6a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v9h2m8 0H9m4 0h2m4 0h2v-4m0 0h-5m3.5 5.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0Zm-10 0a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0Z"
-          />
-        </svg>
-        your package will be delivered in <strong>2-4 days</strong>
-      </span>
-                    </>    
-: (
+          {itemsData.length > 0 ? (
+            <>
+              {itemsData.map((item) => (
+                <CartItem
+                  key={item.id}
+                  id={item.id}
+                  title={item.title}
+                  price={item.price}
+                  image={item.images[0]}
+                  qty={item.qty}
+                  onDelete={deleteProductCart}
+                  onQuantityChange={updateProductQuantity}
+                />
+              ))}
+              <span className="flex gap-2 mx-3">
+                <svg
+                  className="w-6 h-6 text-gray-800"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke="currentColor"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M13 7h6l2 4m-8-4v8m0-8V6a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v9h2m8 0H9m4 0h2m4 0h2v-4m0 0h-5m3.5 5.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0Zm-10 0a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0Z"
+                  />
+                </svg>
+                your package will be delivered in <strong>2-4 days</strong>
+              </span>
+            </>
+          ) : (
             <div className="m-3 mx-9 text-xl font-bold flex gap-4">
               Cart is empty{' '}
               <svg

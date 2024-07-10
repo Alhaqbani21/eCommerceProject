@@ -1,17 +1,17 @@
-import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
-import axios from "axios";
-import Nav from "../componenet/Nav";
-import { useDispatch } from "react-redux";
-import { ToastContainer, toast } from "react-toastify";
-import { fetchCart } from "../features/cartSlice";
+import { useEffect, useState } from 'react';
+import { Link, useParams } from 'react-router-dom';
+import axios from 'axios';
+import Nav from '../componenet/Nav';
+import { useDispatch } from 'react-redux';
+import { ToastContainer, toast } from 'react-toastify';
+import { fetchCart } from '../features/cartSlice';
 
 function Detailpage() {
   const dispatch = useDispatch();
   const { id } = useParams();
   const [viewDetails, setViewDetails] = useState(null);
   const [userData, setUserData] = useState([]);
-  const userId = localStorage.getItem("userId");
+  const userId = localStorage.getItem('userId');
 
   useEffect(() => {
     axios
@@ -54,18 +54,18 @@ function Detailpage() {
       )
       .then(() => {
         setUserData(updatedUserData);
-        toast.success("Added product to cart!");
+        toast.success('Added product to cart!');
         dispatch(fetchCart(userId));
       })
       .catch((error) => {
-        console.error("Error updating cart:", error);
-        toast.error("Failed to add product to cart");
+        console.error('Error updating cart:', error);
+        toast.error('Failed to add product to cart');
       });
   };
   return (
     <>
       <Nav />
-      <ToastContainer />
+      <ToastContainer autoClose={2000} />
 
       <div className="max-w-2xl mx-auto mt-20">
         <div className="card shadow-lg transition duration-200 bg-white">
@@ -86,7 +86,7 @@ function Detailpage() {
                   src={
                     viewDetails.images && viewDetails.images.length > 0
                       ? viewDetails.images[0]
-                      : "https://via.placeholder.com/150"
+                      : 'https://via.placeholder.com/150'
                   }
                   alt=""
                   className="block max-w-full h-auto"
@@ -131,8 +131,8 @@ function Detailpage() {
             </div> */}
 
             <div className="action flex justify-around w-full">
-              <Link to={"/"}>
-                {" "}
+              <Link to={'/'}>
+                {' '}
                 {/* <button
                   type="button"
                   className="cursor-pointer border border-black py-3 px-7 rounded-full text-white bg-black font-semibold text-base transition duration-200 hover:bg-[#fff] hover:text-black"
