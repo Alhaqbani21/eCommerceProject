@@ -1,29 +1,29 @@
-import React from 'react';
-import axios from 'axios';
-import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import Nav from '../componenet/Nav';
-import Footer from '../componenet/Footer';
+import React from "react";
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import Nav from "../componenet/Nav";
+import Footer from "../componenet/Footer";
 // import { useRef } from "react";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import { useDispatch } from 'react-redux';
-import { fetchCart } from '../features/cartSlice';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { useDispatch } from "react-redux";
+import { fetchCart } from "../features/cartSlice";
 
 function HomePage() {
   const [category, setcategory] = React.useState([]);
   const [product, setproduct] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
-  const [searchInput, setsearchInput] = useState('');
+  const [searchInput, setsearchInput] = useState("");
   const [visibleCount, setVisibleCount] = useState(10);
   const ITEMS_TO_LOAD = 10;
   const [userData, setUserData] = useState([]);
-  const userId = localStorage.getItem('userId');
+  const userId = localStorage.getItem("userId");
   const dispatch = useDispatch();
 
   useEffect(() => {
     axios
-      .get('https://668a90262c68eaf3211d2977.mockapi.io/products')
+      .get("https://668a90262c68eaf3211d2977.mockapi.io/products")
       .then((res) => {
         let array = [];
         res.data.filter((res) => {
@@ -43,7 +43,7 @@ function HomePage() {
 
   useEffect(() => {
     axios
-      .get('https://668a90262c68eaf3211d2977.mockapi.io/products')
+      .get("https://668a90262c68eaf3211d2977.mockapi.io/products")
       .then((response) => {
         // handle success
 
@@ -74,7 +74,7 @@ function HomePage() {
       });
   }
   const searchFilterData = () => {
-    if (searchInput === '') {
+    if (searchInput === "") {
       setFilteredData(product);
     } else {
       const filtered = product.filter((product) =>
@@ -117,12 +117,12 @@ function HomePage() {
       )
       .then(() => {
         setUserData(updatedUserData);
-        toast.success('Added product to cart!');
+        toast.success("Added product to cart!");
         dispatch(fetchCart(userId));
       })
       .catch((error) => {
-        console.error('Error updating cart:', error);
-        toast.error('Failed to add product to cart');
+        console.error("Error updating cart:", error);
+        toast.error("Failed to add product to cart");
       });
   };
 
@@ -142,11 +142,16 @@ function HomePage() {
             alt=""
           />
         </div>
-        <div className="">
+        <div className="max-sm:px-8">
           <h1 className="mb-5 text-4xl font-bold"> New Collection </h1>
 
-          <button className="btn bg-[#E47732] hover:bg-[#E97739] text-white">
-            Shop now{' '}
+          <button
+            onClick={() => {
+              location.href = "#1";
+            }}
+            className="btn bg-[#E47732] hover:bg-[#E97739] text-white"
+          >
+            Shop now{" "}
             <svg
               className="w-6 h-6 text-gray-800 dark:text-white"
               aria-hidden="true"
@@ -168,22 +173,25 @@ function HomePage() {
         </div>
       </div>
 
-      <div className="flex bg-white  p-5 justify-around">
+      <div className="flex bg-white max-sm:flex-col p-5 justify-around">
         <div className="m-5">
           <h1 className="text-2xl  border-b-2 pb-3 border-secondary">
             Shop by categories
           </h1>
+          <br />
 
-          <p className="text-gray-400 ">
-            +{product.length} <br /> Unique product
+          <span className="mt-4 text-lg">Explore our diverse collection</span>
+          <p className="text-gray-400  text-lg ">
+            {" "}
+            +{product.length} Unique product
           </p>
         </div>
-        <section className="flex h-80 gap-2">
+        <section className="flex  max-sm:h-full h-80 gap-2">
           {category.map((e, index) => (
             <button
               key={e.id}
               onClick={() => {
-                location.href = '#1';
+                location.href = "#1";
                 handleCategories(e.id);
               }}
               className="border hover:scale-105  bg-base-200 rounded-xl overflow-hidden"
@@ -199,14 +207,19 @@ function HomePage() {
       </div>
 
       <div className="pb-4 bg-white">
-        <div className="form-control  p-0 overflow-hidden   flex-row  w-full justify-center ">
+        <div
+          className="form-control 
+         p-0    flex-row 
+          w-full justify-center "
+        >
           <input
             type="text"
             placeholder="Search"
-            className="px-3 w-[30%] input input-bordered rounded-lg shadow-2xl max-md:w-[70%]"
+            className="px-3  w-[30%] input rounded-none rounded-s-lg
+            input-bordered  shadow-2xl max-md:w-[70%]"
             onChange={(e) => setsearchInput(e.target.value)}
             value={searchInput}
-            onKeyDown={(e) => (e.key === 'Enter' ? searchFilterData() : null)}
+            onKeyDown={(e) => (e.key === "Enter" ? searchFilterData() : null)}
           />
 
           <button
@@ -215,7 +228,7 @@ function HomePage() {
             }}
             className="w-10 bg-black rounded-r-lg"
           >
-            {' '}
+            {" "}
             <svg
               className=" m-auto
         text-slate-200 "
@@ -256,7 +269,7 @@ function HomePage() {
                       />
                     </Link>
                     <span
-                      style={{ display: e.discount == '' ? 'none' : '' }}
+                      style={{ display: e.discount == "" ? "none" : "" }}
                       className="absolute top-2 left-2 bg-orange-500 text-white text-xs font-semibold px-2 py-1 rounded"
                     >
                       {e.discount}
@@ -308,8 +321,9 @@ function HomePage() {
                     <h2 className="mt-2 text-gray-800 text-lg font-semibold">
                       {e.title}
                     </h2>
-                    <p className="mt-1 text-gray-600">${e.price}</p>
+                    <p className="mt-1 text-gray-600 font-bold">${e.price}</p>
                     <button
+                      disabled={userId ? false : true}
                       className="btn bg-[#E47732] hover:bg-[#E97739] text-white self-end"
                       onClick={() => handleAddToCart(e)}
                     >
