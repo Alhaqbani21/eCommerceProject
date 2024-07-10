@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
-import Nav from "../componenet/Nav";
+// import Nav from "../componenet/Nav";
 
 function Detailpage() {
   const { id } = useParams();
@@ -25,7 +25,7 @@ function Detailpage() {
 
   return (
     <>
-      <Nav />
+      {/* <Nav /> */}
       <div className="max-w-2xl mx-auto mt-20">
         <div className="card shadow-lg transition duration-200 bg-white">
           <div className="card__title flex items-center p-8">
