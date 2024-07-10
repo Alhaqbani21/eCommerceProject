@@ -90,73 +90,30 @@ function ProfilePage() {
     <>
       <Nav />
       <div className="bg-gray-100 min-h-screen p-4">
-        <ToastContainer autoClose={2000} />
+        <ToastContainer />
         <div className="max-w-6xl mx-auto">
-          <div className="bg-white shadow rounded-lg p-6">
+          <div className="bg-white shadow rounded-lg p-6 ">
             <h1 className="text-2xl font-semibold mb-4">Account Settings</h1>
-            <div className="grid grid-cols-12 gap-4">
+            <div className="grid grid-cols-12 max-sm:flex max-sm:flex-col gap-4">
               {/* Sidebar */}
-              <div className="col-span-3">
-                {/* nav for mobile */}
-                <div className="navbar bg-base-100 lg:hidden">
-                  <div className="navbar-start"></div>
-                  <div className="navbar-center  lg:flex">
-                    <ul className="menu menu-horizontal px-1">
-                      <li>
-                        <Link
-                          to={'../profile'}
-                          className="p-2 rounded bg-blue-100 text-[#E47732] font-semibold"
-                        >
-                          My Profile
-                        </Link>
-                      </li>
-                      <li>
-                        <Link
-                          to={'/OrderHistory'}
-                          className="p-2 rounded hover:bg-gray-200"
-                        >
-                          Order History
-                        </Link>
-                      </li>
-                      <li>
-                        <Link
-                          onClick={() => {
-                            localStorage.clear();
-                            toast.info('Logout successfully');
-                            setTimeout(() => {
-                              navigate('../');
-                            }, 1000);
-                          }}
-                          className="p-2 rounded hover:bg-gray-200 flex gap-2 items-center"
-                        >
-                          Logout <CiLogout className="text-red-500" />
-                        </Link>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-                {/* end */}
-
-                <nav className="flex flex-col space-y-2 max-sm:hidden">
+              <div className="col-span-3 max-sm:w-full">
+                <nav className="flex flex-col max-sm:justify-between  max-sm:flex-row space-y-2 ">
                   <Link
                     to={'../profile'}
-                    className="p-2 rounded bg-blue-100 text-[#E47732] font-semibold"
+                    className="p-2 rounded  bg-blue-100 text-[#E47732] font-semibold"
                   >
                     My Profile
                   </Link>
                   <Link
                     to={'/OrderHistory'}
-                    className="p-2 rounded hover:bg-gray-200"
+                    className="p-2 rounded max-sm:mt-1 hover:bg-gray-200"
                   >
                     Order History
                   </Link>
                   <Link
                     onClick={() => {
                       localStorage.clear();
-                      toast.info('Logout successfully');
-                      setTimeout(() => {
-                        navigate('../');
-                      }, 1000);
+                      navigate('../');
                     }}
                     className="p-2 rounded hover:bg-gray-200 flex gap-2 items-center"
                   >
@@ -165,8 +122,8 @@ function ProfilePage() {
                 </nav>
               </div>
               {/* Main Content */}
-              <div className="col-span-9">
-                <div className="bg-gray-50 p-4 rounded-lg shadow  max-sm:mt-[4em] ">
+              <div className="col-span-9 max-sm:p-0">
+                <div className="bg-gray-50 p-4 rounded-lg shadow  max-sm:mt-[5em] ">
                   {/* Profile Section */}
                   <div className="flex items-center space-x-4 mb-6 ">
                     <img

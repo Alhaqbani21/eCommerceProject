@@ -1,13 +1,13 @@
-import { Link, useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
-import axios from "axios";
-import { CiLogout } from "react-icons/ci";
-import { array } from "yup";
-import Nav from "../componenet/Nav";
+import { Link, useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
+import { CiLogout } from 'react-icons/ci';
+import { array } from 'yup';
+import Nav from '../componenet/Nav';
 
 function OrderHistory() {
   const [prodect, setProdect] = useState([]);
-  const id = localStorage.getItem("userId");
+  const id = localStorage.getItem('userId');
   // const [isLoading, setIsLoding] = useState(false);
   const navigate = useNavigate();
 
@@ -65,13 +65,13 @@ function OrderHistory() {
               <div className="col-span-3 max-sm:w-full">
                 <nav className="flex flex-col max-sm:justify-between  max-sm:flex-row space-y-2">
                   <Link
-                    to={"/Profile"}
+                    to={'/Profile'}
                     className="p-2 rounded max-sm:mt-1 hover:bg-gray-200 "
                   >
                     My Profile
                   </Link>
                   <Link
-                    to={"/OrderHistory"}
+                    to={'/OrderHistory'}
                     href="#"
                     className="p-2 rounded font-semibold bg-blue-100 text-[#E47732]"
                   >
@@ -80,10 +80,7 @@ function OrderHistory() {
                   <Link
                     onClick={() => {
                       localStorage.clear();
-                      toast.info("Logout successfully");
-                      setTimeout(() => {
-                        navigate("../");
-                      }, 1000);
+                      navigate('../');
                     }}
                     className="p-2 rounded hover:bg-gray-200 flex gap-2 items-center"
                   >
