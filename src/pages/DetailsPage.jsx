@@ -91,6 +91,12 @@ function Detailpage() {
                   alt=""
                   className="block max-w-full h-auto"
                 />
+                <h1 className="m-0 p-0 font-extrabold text-4xl leading-tight text-gray-900 mt-8">
+                  {viewDetails.title}
+                </h1>
+                <p className="price font-bold text-xl text-gray-900 mt-1">
+                  ${viewDetails.price}
+                </p>
               </div>
               <div className="featured_text">
                 {/* <span className="text-accent">
@@ -102,16 +108,11 @@ function Detailpage() {
             </div>
             <div className="half flex-1 p-4">
               <div className="description mb-6">
-                <p className="sub m-0 p-0 font-light text-xl uppercase text-gray-600 mb-1 mt-[2em]">
+                <p className="sub m-0 p-0 font-light text-xl uppercase text-gray-600  mt-1">
                   {viewDetails.category?.name}
                 </p>
-                <h1 className="m-0 p-0 font-extrabold text-4xl leading-tight text-gray-900 mt-8">
-                  {viewDetails.title}
-                </h1>
-                <p className="price font-bold text-xl text-gray-900 mt-1">
-                  ${viewDetails.price}
-                </p>
-                <p className="m-0  leading-7 text-base text-gray-900 mt-[1em]">
+
+                <p className="m-0  leading-7 text-base text-gray-600 ">
                   {viewDetails.description}
                 </p>
               </div>
