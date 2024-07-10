@@ -220,7 +220,7 @@ function HomePage() {
             type="text"
             placeholder="Search"
             className="px-3  w-[30%] input rounded-none rounded-s-lg
-            input-bordered  shadow-2xl max-md:w-[70%]"
+            input-bordered focus:outline-none  shadow-2xl max-md:w-[70%]"
             onChange={(e) => setsearchInput(e.target.value)}
             value={searchInput}
             onKeyDown={(e) => (e.key === 'Enter' ? searchFilterData() : null)}
