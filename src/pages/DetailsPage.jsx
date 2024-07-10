@@ -79,7 +79,7 @@ function Detailpage() {
               New products
             </h3>
           </div>
-          <div className="card__body p-8 flex flex-wrap mb-6">
+          <div className="card__body max-sm:flex-col p-8 flex flex-wrap mb-6">
             <div className="half flex-1 p-4">
               <div className="image pt-4 w-full">
                 <img
@@ -120,15 +120,7 @@ function Detailpage() {
             </div>
           </div>
           <div className="card__footer p-8 flex items-center relative">
-            <div className="absolute top-0 left-10 w-[calc(100%-40px)] h-0.5 bg-black bg-gradient-to-r from-black to-gray-300"></div>
-            {/* <div className="recommend flex-1">
-              <p className="m-0 font-semibold uppercase text-sm text-gray-700">
-                Recommended by
-              </p>
-              <h3 className="m-0 text-xl font-semibold uppercase text-black">
-                Andrew Palmer
-              </h3>
-            </div> */}
+            <div className="absolute top-0 left-10 max-sm:w-80 w-[calc(100%-40px)] h-0.5 bg-black bg-gradient-to-r from-black to-gray-300"></div>
 
             <div className="action flex justify-around w-full">
               <Link to={"/"}>
@@ -141,7 +133,7 @@ function Detailpage() {
                 </button> */}
               </Link>
               <button
-                className="btn rounded-3xl text-lg bg-[#E47732] hover:bg-[#E97739] text-white self-end w-[10em] ml-[22em]"
+                className="btn rounded-3xl text-lg bg-[#E47732] hover:bg-[#E97739] text-white self-end w-[10em] max-sm:ml-0 ml-[22em]"
                 onClick={() => handleAddToCart(viewDetails)}
               >
                 Add to Cart
