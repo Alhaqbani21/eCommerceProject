@@ -18,7 +18,7 @@ function CartItem({
         <div>
           <h1 className="font-bold">{title}</h1>
           <label className="">
-            quantity:
+            Qty:
             {checkout !== true ? (
               <select
                 className="p-3"
