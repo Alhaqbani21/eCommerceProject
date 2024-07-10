@@ -254,14 +254,6 @@ function HomePage() {
               />
             </svg>
           </button>
-<<<<<<< HEAD
-          {category.length > 1 && (
-            <button
-              onClick={() => {
-                searchFilterData();
-              }}
-              className="mx-2 btn bg-[#E47732] hover:bg-[#E97739] text-white"
-=======
           {isCategory === true && (
             <button
               onClick={() => {
@@ -269,7 +261,6 @@ function HomePage() {
                 setisCategory(false);
               }}
               className="mx-2 btn btn-primary  text-white"
->>>>>>> abdulaziz
             >
               All products
             </button>
